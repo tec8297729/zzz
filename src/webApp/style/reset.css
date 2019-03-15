@@ -1,0 +1,112 @@
+@charset "utf-8";html{background-color:#fff;color:#000;font-size:16px}
+body,ul,ol,dl,dd,h1,h2,h3,h4,h5,h6,figure,form,fieldset,legend,input,textarea,button,p,blockquote,th,td,pre,xmp{margin:0;padding:0}
+body,input,textarea,button,select,pre,xmp,tt,code,kbd,samp{line-height:1.5;font-family:tahoma,arial,"Hiragino Sans GB",simsun,sans-serif}
+h1,h2,h3,h4,h5,h6,small,big,input,textarea,button,select{font-size:100%}
+h1,h2,h3,h4,h5,h6{font-family:tahoma,arial,"Hiragino Sans GB","微软雅黑",simsun,sans-serif}
+h1,h2,h3,h4,h5,h6,b,strong{font-weight:normal}
+address,cite,dfn,em,i,optgroup,var{font-style:normal}
+table{border-collapse:collapse;border-spacing:0;text-align:left}
+caption,th{text-align:inherit}
+ul,ol,menu{list-style:none}
+fieldset,img{border:0}
+img,object,input,textarea,button,select{vertical-align:middle}
+article,aside,footer,header,section,nav,figure,figcaption,hgroup,details,menu{display:block}
+audio,canvas,video{display:inline-block;*display:inline;*zoom:1}
+blockquote:before,blockquote:after,q:before,q:after{content:"\0020"}
+textarea{overflow:auto;resize:vertical}
+input,textarea,button,select,a{outline:0 none;border: none;}
+button::-moz-focus-inner,input::-moz-focus-inner{padding:0;border:0}
+mark{background-color:transparent}
+a,ins,s,u,del{text-decoration:none}
+sup,sub{vertical-align:baseline}
+html {overflow-x: hidden;height: 100%;font-size: 50px;-webkit-tap-highlight-color: transparent;}
+body {font-family: Arial, "Microsoft Yahei", "Helvetica Neue", Helvetica, sans-serif;color: #333;font-size: .28em;line-height: 1;-webkit-text-size-adjust: none;}
+hr {height: .02rem;margin: .1rem 0;border: medium none;border-top: .02rem solid #cacaca;}
+a {color: #25a4bb;text-decoration: none;}
+/*
+动态媒体查询改变大小，做了低设备兼容处理px方案，优先使用vw效果更佳
+另附学习文章http://www.zhangxinxu.com/wordpress/2016/08/vw-viewport-responsive-layout-typography/
+ */
+@media screen and (max-width: 320px) {
+  html {
+    font-size: 42.667px;
+    font-size: 13.33333vw
+  }
+}
+
+@media screen and (min-width: 321px) and (max-width:360px) {
+  html {
+    font-size: 48px;
+    font-size: 13.33333vw
+  }
+}
+
+@media screen and (min-width: 361px) and (max-width:375px) {
+  html {
+    font-size: 50px;
+    font-size: 13.33333vw
+  }
+}
+
+@media screen and (min-width: 376px) and (max-width:393px) {
+  html {
+    font-size: 52.4px;
+    font-size: 13.33333vw
+  }
+}
+
+@media screen and (min-width: 394px) and (max-width:412px) {
+  html {
+    font-size: 54.93px;
+    font-size: 13.33333vw
+  }
+}
+
+@media screen and (min-width: 413px) and (max-width:414px) {
+  html {
+    font-size: 55.2px;
+    font-size: 13.33333vw
+  }
+}
+
+@media screen and (min-width: 415px) and (max-width:480px) {
+  html {
+    font-size: 64px;
+    font-size: 13.33333vw
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width:540px) {
+  html {
+    font-size: 72px;
+    font-size: 13.33333vw
+  }
+}
+
+@media screen and (min-width: 541px) and (max-width:640px) {
+  html {
+    font-size: 85.33px;
+    font-size: 13.33333vw
+  }
+}
+
+@media screen and (min-width: 641px) and (max-width:720px) {
+  html {
+    font-size: 96px;
+    font-size: 13.33333vw
+  }
+}
+
+@media screen and (min-width: 721px) and (max-width:768px) {
+  html {
+    font-size: 102.4px;
+    font-size: 13.33333vw
+  }
+}
+
+@media screen and (min-width: 769px) {
+  html {
+    font-size: 102.4px;
+    font-size: 13.33333vw
+  }
+}

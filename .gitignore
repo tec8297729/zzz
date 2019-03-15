@@ -1,0 +1,16 @@
+# OS or Editor folders
+.DS_Store
+.cache
+.project
+.settings
+.tmproj
+# 编辑器本地配置
+/.idea
+/.vscode
+/node_modules
+# 忽略生成的目录
+/dist
+docs
+npm-debug.log
+/log
+/.cache-loader

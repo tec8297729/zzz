@@ -1,0 +1,19 @@
+{
+  "name" : "antdAdmin",
+  "script": "./dist/app.js",
+  "log_date_format":"YYYY-MM-DD HH:mm Z",
+  // node有打印信息都会加入此日志中
+  // "out_file":"log/node-app.stdout.log",
+  // 错误日志记录文件
+  "error_file":"log/node-app.error.log",
+  // 定义环境变量，命令中附加--env production即可读取到是生产环境
+  "env": {
+    "NODE_ENV": "development"
+  },
+  "env_production": {
+    "NODE_ENV": "production"
+  },
+  "watch":true,
+  "instances":"max",
+  "exec_mode":"cluster"
+}
