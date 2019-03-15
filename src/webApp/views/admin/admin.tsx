@@ -1,13 +1,14 @@
 import * as React from 'react';
 import { Row, Col } from 'antd';
-import Header from '../../components/Header/Header';
-import Footer from '../../components/Footer/Footer';
-import NavLeft from '../../components/NavLeft/NavLeft';
+import Header from '@components/Header/Header';
+import Footer from '@components/Footer/Footer';
+import NavLeft from '@components/NavLeft/NavLeft';
 // tslint:disable-next-line: no-implicit-dependencies
 import {withRouter } from 'react-router';
 import localforage from 'localforage'; // 缓存插件
 
-import '../../style/common.less'; // 共用样式
+// tslint:disable-next-line: no-implicit-dependencies
+import '@style/common.less'; // 共用样式
 import './admin.less';
 
 // 设置数据库存放顺序
