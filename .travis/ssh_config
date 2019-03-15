@@ -1,6 +1,6 @@
 User root
 Host zzqAdmin
-HostName 域名IP地址
+HostName $serverIP
 Port 22
 StrictHostKeyChecking no
 IdentityFile ~/.ssh/zzq_rsa
