@@ -1,14 +1,13 @@
 import koa from 'koa'
 import statics from 'koa-static' // 静态目录中间件
-
+import path from 'path';
 // // 以下非koa组件
 import {loginit} from './log4js' // 打印错误日志配置
 import bodyParser from 'koa-bodyparser' //解析POST数据请求
 // import init from './controllers/initController' // 初始化所有路由
 import config from './config' // 配置node文件
-// import log4js from 'log4js'; // 打印错误日志
-// import errorHandler from './middleawares/errorHandler'; // 处理错误页面
-import '@babel/polyfill'; // gulp编译需要
+
+// import '@babel/polyfill'; // gulp编译需要
 // 引入依赖注入插件
 import { Lifetime, createContainer } from 'awilix'; // 作用域，容器二个组件
 import { scopePerRequest, loadControllers } from 'awilix-koa'; // 作用域，读取路由组件
@@ -18,7 +17,7 @@ const app = new koa() //koa实例
 const container = createContainer(); // 创建一个容器管理所有文件路由--灵魂
 // 把所有的services注册到容器
 // [需要注入的文件]，{}配置选项
-container.loadModules([__dirname + '/models/*.js'],{
+container.loadModules([path.resolve(__dirname, '/models/*.js')],{
   // 会把驼峰转换  这样`TodosService`转成`todosService`.
   formatName: 'camelCase', // 把文件导出的类名转换方法使用，相当于new了
   resolverOptions: {
