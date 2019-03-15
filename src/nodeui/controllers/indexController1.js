@@ -1,5 +1,5 @@
 // 这里是indexController.js文件
-import indexMd from '../models/indexMd'; // 统一接口fetch封装
+// import this.indexMd from '../models/this.indexMd'; // 统一接口fetch封装
 import {
   GET,
   route,
@@ -9,7 +9,9 @@ import {
 @route("/") // 顶层根路由页面，这是修饰器
 // 首页相关路由
 class indexController {
-  constructor() {}
+  constructor({indexMd}){
+    this.indexMd = indexMd;
+  }
 
   @GET()
   // 主页
@@ -23,70 +25,70 @@ class indexController {
   @GET()
   // 表格列表请求
   async actionTableList(ctx, next) {
-    const result = await indexMd.getData('/table/list');
+    const result = await this.indexMd.getData('/table/list');
     ctx.body = result;
   }
 
   @route("table/high/list")
   @GET()
   async actionTableHighList(ctx, next) {
-    const result = await indexMd.getData('/table/high/list');
+    const result = await this.indexMd.getData('/table/high/list');
     ctx.body = result;
   }
 
   @route("user/list")
   @GET()
   async actionUserList(ctx, next) {
-    const result = await indexMd.getData('/user/list');
+    const result = await this.indexMd.getData('/user/list');
     ctx.body = result;
   }
 
   @route("user/add")
   @GET()
   async actionUserAdd(ctx, next) {
-    const result = await indexMd.getData('/user/add');
+    const result = await this.indexMd.getData('/user/add');
     ctx.body = result;
   }
 
   @route("user/edit")
   @GET()
   async actionUserEdit(ctx, next) {
-    const result = await indexMd.getData('/user/edit');
+    const result = await this.indexMd.getData('/user/edit');
     ctx.body = result;
   }
 
   @route("user/delete")
   @GET()
   async actionUserDelete(ctx, next) {
-    const result = await indexMd.getData('/user/delete');
+    const result = await this.indexMd.getData('/user/delete');
     ctx.body = result;
   }
 
   @route("open_city")
   @GET()
   async actionOpen_city(ctx, next) {
-    const result = await indexMd.getData('/open_city');
+    const result = await this.indexMd.getData('/open_city');
     ctx.body = result;
   }
 
   @route("city/open")
   @GET()
   async actionCityOpen(ctx, next) {
-    const result = await indexMd.getData('/city/open');
+    const result = await this.indexMd.getData('/city/open');
     ctx.body = result;
   }
 
   @route("order/list")
   @GET()
   async actionOrderList(ctx, next) {
-    const result = await indexMd.getData('/order/list');
+    const result = await this.indexMd.getData('/order/list');
     ctx.body = result;
   }
 
   @route("order/detail")
   @GET()
   async actionOrderDetail(ctx, next) {
-    const result = await indexMd.getData('/order/detail');
+    const result = await this.indexMd.getData('/order/detail');
     ctx.body = result;
   }
 
@@ -94,49 +96,49 @@ class indexController {
   @route("order/finish_order")
   @GET()
   async actionOrderFinish(ctx, next) {
-    const result = await indexMd.getData('/order/finish_order');
+    const result = await this.indexMd.getData('/order/finish_order');
     ctx.body = result;
   }
 
   @route("order/ebike_info")
   @GET()
   async actionOrderEbike_info(ctx, next) {
-    const result = await indexMd.getData('/order/ebike_info');
+    const result = await this.indexMd.getData('/order/ebike_info');
     ctx.body = result;
   }
 
   @route("role/list")
   @GET()
   async actionRoleList(ctx, next) {
-    const result = await indexMd.getData('/role/list');
+    const result = await this.indexMd.getData('/role/list');
     ctx.body = result;
   }
 
   @route("role/create")
   @GET()
   async actionRoleCreate(ctx, next) {
-    const result = await indexMd.getData('/role/create');
+    const result = await this.indexMd.getData('/role/create');
     ctx.body = result;
   }
 
   @route("role/user_list")
   @GET()
   async actionRoleUserList(ctx, next) {
-    const result = await indexMd.getData('/role/user_list');
+    const result = await this.indexMd.getData('/role/user_list');
     ctx.body = result;
   }
 
   @route("permission/edit")
   @GET()
   async actionPermissionEdit(ctx, next) {
-    const result = await indexMd.getData('/permission/edit');
+    const result = await this.indexMd.getData('/permission/edit');
     ctx.body = result;
   }
 
   @route("map/bike_list")
   @GET()
   async actionMapBikeList(ctx, next) {
-    const result = await indexMd.getData('/map/bike_list');
+    const result = await this.indexMd.getData('/map/bike_list');
     ctx.body = result;
   }
 }

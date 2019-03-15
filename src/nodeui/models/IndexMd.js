@@ -5,7 +5,7 @@ import config from '../config/index';
  * Index类 获取后台有关图书相关数据类
  * @class
  */
-class IndexMd {
+class indexMd {
   /**
    * 获取后台的全部数据，通用get接口
    * @description 描述内容
@@ -32,5 +32,6 @@ class IndexMd {
 
 }
 
-// module.exports = IndexMd;
-export default new IndexMd();
+// module.exports = indexMd;
+// export default new indexMd();
+export default indexMd;
