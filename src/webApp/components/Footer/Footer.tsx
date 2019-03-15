@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-// import './footer.less';
+import './Footer.less';
 // interface Props {}
 
 export default class Footer extends React.Component<object> {

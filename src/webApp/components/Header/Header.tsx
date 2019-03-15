@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Row, Col } from 'antd';
 import Utils from '../../utils/utils'; // 公用方法
 import { NavLink } from 'react-router-dom';
-// import './header.less';
+import './Header.less';
 import SafeRequest from '../../utils/SafeRequest';
 import { connect } from 'react-redux';
 
