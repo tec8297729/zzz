@@ -20,7 +20,7 @@ class SafeRequest {
       };
       fetch(this.url, this.options)
         .then((res) => {
-          console.log('node端')
+          // console.log('node端')
           try {
             // console.log(this.url); // 测试链接
             return res.json(); // 正常接收返回给下一层.then使用

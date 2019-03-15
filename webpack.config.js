@@ -1,4 +1,3 @@
-const webpack = require('webpack');
 const path = require('path');
 const merge = require('webpack-merge'); // 合并webpack配置插件
 const argv = require('yargs-parser')(process.argv.slice(2)); // 可以解析参数成对象，也可以读取到webpack系统变量
@@ -8,8 +7,8 @@ const _modeflag = (_mode == 'production' ? true : false); // 判断是否线上�
 
 const HtmlWebpackPlugin = require('html-webpack-plugin'); // 生成解析html页面
 const MiniCssExtractPlugin = require('mini-css-extract-plugin') // 引入分离打包CSS
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin'); // 压缩css
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin') ; // 多核压缩
+// const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin'); // 压缩css
+// const UglifyJsPlugin = require('uglifyjs-webpack-plugin') ; // 多核压缩
 const tsImportPluginFactory = require('ts-import-plugin'); // 抽离antd没用到的css
 // const { CheckerPlugin } = require('awesome-typescript-loader'); // 缓存编译ts
 
@@ -137,7 +136,7 @@ let config = {
     new CopyWebpackPlugin([
       // 复制文件到指定目录去，可多个
       {
-        from: path.join(__dirname, './', 'src/webApp/public'),
+        from: path.resolve(__dirname, './', 'src/webApp/public'),
         // ./路径是在assets下面，由output.path决定的
         to: './', // 移动到assets目录下
         cache: true // 缓存
