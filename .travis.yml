@@ -5,7 +5,7 @@ addons:
 install:
 - npm install
 before_script:
-- npm run build # 打包编译
+- npm run build:prod # 打包编译
 script:
 - npm run test #测试用例
 
