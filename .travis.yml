@@ -3,6 +3,10 @@ node_js: 10 #指定版本
 cache: npm # 缓存依赖
 addons:
   ssh_known_hosts: $serverIP #指定远程服务器地址
+# 全局参数定义
+env:
+  global:
+    - NODE_ENV="production"
 install:
 - npm install
 before_script:
