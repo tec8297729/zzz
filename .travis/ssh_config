@@ -1,7 +1,7 @@
 User root
 Host zzqAdmin
 HostName $serverIP
-Port 22
+Port 22000
 StrictHostKeyChecking no
 IdentityFile ~/.ssh/zzq_rsa
 IdentitiesOnly yes

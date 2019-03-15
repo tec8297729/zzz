@@ -1,7 +1,5 @@
 // 生产环境配置
-const {
-  join
-} = require('path');
+const path = require('path');
 const webpack = require('webpack');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin'); // 多核压缩
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin'); // cs压缩
@@ -10,12 +8,12 @@ module.exports = {
   mode: 'production', // 默认环境，命令直接--mode production
   entry: { // 入口文件
     app: [
-      join(__dirname, '../src/webApp/client.tsx')
+      path.resolve(__dirname, '../src/webApp/client.tsx')
     ]
   },
   output: { // 打包输出目录及名称
     filename: '[name].[contenthash:5].js', // 生产环境就contenthash
-    path: join(__dirname, '../dist/assets'),
+    path: path.join(__dirname, '../dist/assets'),
     chunkFilename: '[name].[contenthash:8].js',
     // libraryTarget: 'commonjs2' // 设置打包规范模式，common2是可以用在nodejs中的
   },
