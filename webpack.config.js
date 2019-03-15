@@ -17,7 +17,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin'); // 复制目录插件
 
 // 转换目录函数
 function resolve(relatedPath) {
-  return path.join(__dirname, relatedPath);
+  return path.resolve(__dirname, relatedPath);
 }
 
 
