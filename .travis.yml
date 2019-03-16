@@ -1,11 +1,7 @@
-sudo: false
+dist: xenial
 language: node_js #指定系统环境
 node_js: #指定版本
-  - 7
-  - 8
-  - 9
   - 10
-  - 11
 cache: npm # 缓存依赖
 addons:
   ssh_known_hosts: $serverIP #指定远程服务器地址
