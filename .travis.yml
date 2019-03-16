@@ -17,9 +17,9 @@ before_script:
 script:
 - npm run test #测试用例
 
+before_install:
+- openssl aes-256-cbc -K $encrypted_ee81ad9fc488_key -iv $encrypted_ee81ad9fc488_iv
+  -in zzq_rsa.enc -out ~/.ssh/zzq_rsa -d
 # after_script:
 #构建完毕，自动将代码分发到远程主机
 # - scp -o StrictHostKeyChecking=no ./docs/ root@$ip2:/docs
-# before_install:
-# - openssl aes-256-cbc -K $encrypted_ee81ad9fc488_key -iv $encrypted_ee81ad9fc488_iv
-#   -in zzq_rsa.enc -out ~/.ssh/zzq_rsa -d

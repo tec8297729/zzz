@@ -43,8 +43,10 @@ app.use(loadControllers(__dirname + '/controllers/*.js', {
 // init(app) // 初始化所有路由(引入app),为后续app.use挂载一些初始化东西使用
 
 // 启用服务
-app.listen(config.port, () => {
+let server = app.listen(config.port, () => {
   console.log(`服务启动成功 http://localhost:${config.port}`)
 })
 
-module.exports = app
+module.exports = {
+  app,server
+}
