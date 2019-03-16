@@ -56,25 +56,25 @@ module.exports = {
     },
     minimizer: [
       // 自定义js优化配置，将会覆盖默认配置
-      new UglifyJsPlugin({
-        include: /\/src/,
-        // exclude: /\/node_modules/,
-        exclude: /\.min\.js$/, // 过滤掉以".min.js"结尾的文件，我们认为这个后缀本身就是已经压缩好的代码，没必要进行二次压缩
-        cache: true, // 开启缓存
-        parallel: true, // 开启并行压缩，充分利用cpu
-        sourceMap: false,
-        extractComments: false, // 移除注释
-        uglifyOptions: {
-          compress: {
-            unused: true,
-            warnings: false,
-            drop_debugger: true
-          },
-          output: {
-            comments: false
-          }
-        }
-      }),
+      // new UglifyJsPlugin({
+      //   include: /\/src/,
+      //   // exclude: /\/node_modules/,
+      //   exclude: /\.min\.js$/, // 过滤掉以".min.js"结尾的文件，我们认为这个后缀本身就是已经压缩好的代码，没必要进行二次压缩
+      //   cache: true, // 开启缓存
+      //   parallel: true, // 开启并行压缩，充分利用cpu
+      //   sourceMap: false,
+      //   extractComments: false, // 移除注释
+      //   uglifyOptions: {
+      //     compress: {
+      //       unused: true,
+      //       warnings: false,
+      //       drop_debugger: true
+      //     },
+      //     output: {
+      //       comments: false
+      //     }
+      //   }
+      // }),
       // 用于优化css文件
       new OptimizeCssAssetsPlugin({
         assetNameRegExp: /\.css$/g,
