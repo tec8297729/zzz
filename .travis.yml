@@ -1,5 +1,5 @@
 dist: xenial
-sudo: false
+sudo: required
 language: node_js #指定系统环境
 node_js: #指定版本
   - 10
@@ -15,7 +15,7 @@ install:
 before_script:
 - npm run build:prod # 打包编译
 script:
-- sudo npm run test #测试用例
+- npm run test #测试用例
 
 # after_script:
 #构建完毕，自动将代码分发到远程主机
