@@ -20,7 +20,7 @@ if(process.env.NODE_ENV == 'development'){
 if(process.env.NODE_ENV == 'production'){
   const prodConfig = {
     baseUrl: 'https://www.easy-mock.com/mock/5c822903e2062b28ed86bda7/mockapi',
-    port:443
+    port:80
   }
   config = _.extend(config,prodConfig)
 }
