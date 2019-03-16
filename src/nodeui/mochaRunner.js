@@ -12,7 +12,7 @@ mocha.addFile('./dist/test/dataApi.spec.js');
 
 mocha.run(function (errorLenth) {
   // 检测出错的长度有多少个
-  if(errorLenth>0){
+  if(errorLenth>1){
     console.log('单元测试失败');
     process.exit(1); // exit 1 表示这个测试挂了没通过
   }else{
