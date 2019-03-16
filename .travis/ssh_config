@@ -1,6 +1,6 @@
 User root
 Host zzqAdmin
-HostName $serverIP
+HostName 211.149.195.231
 Port 22000
 StrictHostKeyChecking no
 IdentityFile ~/.ssh/zzq_rsa
