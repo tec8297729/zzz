@@ -4,7 +4,7 @@ const webpack = require('webpack');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin'); // 多核压缩
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin'); // cs压缩
 module.exports = {
-  devtool: 'source-map', // 生产环境，没有源文件映射
+  devtool: 'cheap-module-source-map', // 生产环境，没有源文件映射
   mode: 'production', // 默认环境，命令直接--mode production
   entry: { // 入口文件
     app: [
