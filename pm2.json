@@ -1,6 +1,6 @@
 {
   "name" : "antdAdmin",
-  "script": "/wwwroot/antdAdmin/app.js",
+  "script": "./app.js",
   "log_date_format":"YYYY-MM-DD HH:mm Z",
   // node有打印信息都会加入此日志中
   // "out_file":"log/node-app.stdout.log",
