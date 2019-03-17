@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev:server": "cross-env NODE_ENV=development supervisor ./dist/app.js",
+    "dev:server": "cross-env NODE_ENV=production supervisor ./dist/app.js",
     "dev:client": "webpack-dev-server --mode development",
     "build": "npm run clear && npm run build:server && npm run build:client",
     "build:server": "cross-env NODE_ENV=production gulp",
