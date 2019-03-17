@@ -87,7 +87,7 @@ class Header extends React.Component<Props, State> {
   public getWeatherAPI() {
     let city = '北京';
     SafeRequest.jsonp({
-      url: `http://api.map.baidu.com/telematics/v3/weather?location=${encodeURIComponent(
+      url: `https://api.map.baidu.com/telematics/v3/weather?location=${encodeURIComponent(
         city
       )}&output=json&ak=iKveoNoN8IsMVDWMSxBZ2baDwCfrgNGv`
     }).then(res => {
