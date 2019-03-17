@@ -8,7 +8,7 @@ const ProgressBarPlugin = require('progress-bar-webpack-plugin'); // 显示打�
 const DashboardPlugin = require('webpack-dashboard/plugin'); // 增强了 webpack 的输出
 
 module.exports = {
-  devtool: 'source-map', // 生成map捕获错误映射到源文件source-map eval
+  devtool: 'eval', // 生成map捕获错误映射到源文件source-map eval
   mode: 'development',
   entry:{
     app: [
