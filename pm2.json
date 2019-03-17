@@ -8,9 +8,11 @@
   "error_file":"log/node-app.error.log",
   // 定义环境变量，命令中附加--env production即可读取到是生产环境
   "env": {
+    "PORT": 3000,
     "NODE_ENV": "development"
   },
   "env_production": {
+    "PORT": 3000,
     "NODE_ENV": "production"
   },
   "watch":true,
