@@ -3,7 +3,7 @@ import { Card, Button, message } from 'antd';
 import '../ui.less';
 export default class Buttons extends React.Component {
   public showMessage = type => {
-    message[type]('恭喜你，React课程晋级成功');
+    message[type]('恭喜你');
   }
 
   public render() {
