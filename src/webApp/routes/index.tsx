@@ -59,34 +59,76 @@ export default class RoutersConfig extends React.Component {
                 <Switch>
 
                   <Route path="/home" component={Home}/>
-                  <Route path="/ui/buttons" component={Buttons}/>
-                  <Route path="/ui/modals" component={Modals}/>
-                  <Route path="/ui/loadings" component={Loadings}/>
-                  <Route path="/ui/notification" component={Notice}/>
-                  <Route path="/ui/messages" component={Messages}/>
-                  <Route path="/ui/tabs" component={Tabs}/>
-                  <Route path="/ui/gallery" component={Gallery}/>
-                  <Route path="/ui/carousel" component={Carousel}/>
+                  <Route path="/ui/buttons" render={props => (
+                    <Buttons/>
+                  )}/>
+                  <Route path="/ui/modals" render={props => (
+                    <Modals/>
+                  )}/>
+                  <Route path="/ui/loadings" render={props => (
+                    <Loadings/>
+                  )}/>
+                  <Route path="/ui/notification" render={props => (
+                    <Notice/>
+                  )}/>
+                  <Route path="/ui/messages" render={props => (
+                    <Messages/>
+                  )}/>
+                  <Route path="/ui/tabs" render={props => (
+                    <Tabs/>
+                  )}/>
+                  <Route path="/ui/gallery" render={props => (
+                    <Gallery/>
+                  )}/>
+                  <Route path="/ui/carousel" render={props => (
+                    <Carousel/>
+                  )}/>
 
-                  <Route path="/form/login" component={FormLogin}/>
-                  <Route path="/form/register" component={Register}/>
+                  <Route path="/form/login" render={props => (
+                    <FormLogin/>
+                  )}/>
+                  <Route path="/form/register" render={props => (
+                    <Register/>
+                  )}/>
 
-                  <Route path="/table/basic" component={BasicTable}/>
-                  <Route path="/table/high" component={HighTable}/>
-                  <Route path="/city" component={City}/>
-                  <Route path="/order" component={Order}/>
-                  <Route path="/user" component={User}/>
-                  <Route path="/bikeMap" component={BikeMap}/>
+                  <Route path="/table/basic" render={props => (
+                    <BasicTable/>
+                  )}/>
+                  <Route path="/table/high" render={props => (
+                    <HighTable/>
+                  )}/>
+                  <Route path="/city" render={props => (
+                    <City/>
+                  )}/>
+                  <Route path="/order" render={props => (
+                    <Order/>
+                  )}/>
+                  <Route path="/user" render={props => (
+                    <User/>
+                  )}/>
+                  <Route path="/bikeMap" render={props => (
+                    <BikeMap/>
+                  )}/>
 
                   {/* 图表系列专题 */}
-                  <Route path="/charts/bar" component={Bar}/>
-                  <Route path="/charts/pie" component={Pie}/>
-                  <Route path="/charts/line" component={Line}/>
+                  <Route path="/charts/bar" render={props => (
+                    <Bar/>
+                  )}/>
+                  <Route path="/charts/pie" render={props => (
+                    <Pie/>
+                  )}/>
+                  <Route path="/charts/line" render={props => (
+                    <Line/>
+                  )}/>
                   {/* 富文本 */}
-                  <Route path="/rich" component={Rich}/>
+                  <Route path="/rich" render={props => (
+                    <Rich/>
+                  )}/>
 
                   {/*   */}
-                  <Route path="/permission" component={Permission}/>
+                  <Route path="/permission" render={props => (
+                    <Permission/>
+                  )}/>
 
                   {/* 以上页面都找不到时，默认重定向到home页面 */}
                   <Redirect to="/home"/>

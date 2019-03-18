@@ -154,7 +154,10 @@ let config = {
         removeComments: _modeflag, //移除HTML中的注释
         collapseWhitespace: _modeflag, //删除空白符与换行符
         removeAttributeQuotes: true, //去除属性引用
-      }
+        minifyJS: true,
+        minifyCSS: true,
+      },
+      chunksSortMode: 'dependency',
     }),
     // 压缩css
     // new OptimizeCssAssetsPlugin({

@@ -4,7 +4,7 @@ const webpack = require('webpack');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin'); // 多核压缩
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin'); // cs压缩
 module.exports = {
-  devtool: 'cheap-module-source-map', // 生产环境，没有源文件映射
+  devtool: 'none', // 生产环境nosources-source-map，没有源文件映射cheap-module-source-map
   mode: 'production', // 默认环境，命令直接--mode production
   entry: { // 入口文件
     app: [
@@ -31,27 +31,47 @@ module.exports = {
       minSize: 30000, // 30kb
       minChunks: 1,
       maxAsyncRequests: 5, // 最大的异步请求数
-      maxInitialRequests: 3, // 最大初始请求数
+      maxInitialRequests: 5, // 最大初始请求数
       automaticNameDelimiter: '~',
       name: true,
       cacheGroups: {
+        // 公用组件
+        commons: {
+          test: /[\\/]src[\\/]common[\\/]/,
+          name: 'commons',
+          minSize: 30000,
+          minChunks: 2,
+          chunks: 'initial',
+          priority: 0,
+          reuseExistingChunk: true // 这个配置允许我们使用已经存在的代码块
+        },
+        // 单独打包react插件
+        'react-vendor': {
+          chunks: 'initial', // 'initial', 'async', 'all',
+          test: /[\\/]node_modules[\\/]react/, // <- window | mac -> /node_modules/vue/
+          name: 'react-vendor',
+          minChunks: 1,
+          enforce: true,
+          priority: -1,
+        },
+        // 单独打包echarts图表插件
+        'echarts-vendor': {
+          chunks: 'initial',
+          test: /[\\/]node_modules[\\/]echarts/,
+          name: 'echarts-vendor',
+          minChunks: 1,
+          enforce: true,
+          priority: -8,
+        },
         vendors: {
           test: /[\\/]node_modules[\\/]/, // 把node_modules模块分离出来，分离出共享模块
           name: 'vendors',
           minSize: 30000,
           minChunks: 1,
-          chunks: 'initial',
-          priority: 1 // 该配置项是设置处理的优先级，数值越大越优先处理
+          chunks: 'initial',  // 'initial', 'async', 'all'
+          priority: -10 // 该配置项是设置处理的优先级，数值越大越优先处理
         },
-        commons: {
-          test: /[\\/]src[\\/]common[\\/]/,
-          name: 'commons',
-          minSize: 30000,
-          minChunks: 3,
-          chunks: 'initial',
-          priority: -1,
-          reuseExistingChunk: true // 这个配置允许我们使用已经存在的代码块
-        }
+
       }
     },
     minimizer: [
