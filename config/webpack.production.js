@@ -21,9 +21,8 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production')
     }),
-    new webpack.optimize.ModuleConcatenationPlugin(),
+    new webpack.optimize.ModuleConcatenationPlugin(), // 启动域编译功能，提升作用域
     new webpack.NoEmitOnErrorsPlugin(),
-
   ],
   optimization: {
     splitChunks: {
