@@ -14,15 +14,6 @@ let config:Iconfig = {
   staticDir: path.join(__dirname, '../assets') // 静态资源目录
 };
 
-// 判断环境变量-开发环境
-if (process.env.NODE_ENV == 'development') {
-  const localConfig = {
-    baseUrl: 'https://www.easy-mock.com/mock/5c822903e2062b28ed86bda7/mockapi',
-    port: 8888
-  };
-  config = _.extend(config, localConfig); // 合并
-}
-
 // 正式上线环境变量
 if (process.env.NODE_ENV == 'production') {
   const prodConfig = {
@@ -30,6 +21,13 @@ if (process.env.NODE_ENV == 'production') {
     port: 3000
   };
   config = _.extend(config, prodConfig);
+}else{
+  // 开发环境
+  const localConfig = {
+    baseUrl: 'https://www.easy-mock.com/mock/5c822903e2062b28ed86bda7/mockapi',
+    port: 8888
+  };
+  config = _.extend(config, localConfig); // 合并
 }
 
 // 上面也可以使用new Map()实现,通过set get方法设置与获取...

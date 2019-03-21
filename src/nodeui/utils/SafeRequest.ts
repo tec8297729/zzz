@@ -54,7 +54,7 @@ class SafeRequest implements ISafeRequest {
         .catch(error => {
           result.code = 2;
           result.message = 'node-fetch请求失败,后端报警-请求挂了';
-          // result.body = error;
+          result.data = error;
           // 中间可以处理 自动发送email,或打电话短信等
           reject(result); // 返回一个错误,以免用户感知
         });

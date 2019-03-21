@@ -2,8 +2,7 @@ import koa from 'koa';
 import statics from 'koa-static'; // 静态目录中间件
 // // 以下非koa组件
 import { loginit } from './log4js'; // 打印错误日志配置
-import bodyParser from 'koa-bodyparser'; //解析POST数据请求
-// import init from './controllers/initController' // 初始化所有路由
+import bodyParser from 'koa-bodyparser'; // 解析POST数据请求
 import config from './config'; // 配置node文件
 
 import 'reflect-metadata'; // inversify需要使用的插件
@@ -16,7 +15,6 @@ container.load( buildProviderModule() )
 // 创建一个koa服务，并且把容器放入来
 let server = new InversifyKoaServer(container);
 
-// const app = new koa(); //koa实例
 server.setConfig(app=>{
   // 设置koa中间件的，如404,500
   app.use(statics(config.staticDir)); // 静态文件目录
@@ -31,12 +29,12 @@ server.setConfig(app=>{
 let app = server.build(); // 服务koa服务
 
 
-
-// init(app) // 初始化所有路由(引入app),为后续app.use挂载一些初始化东西使用
-
 // 启用服务
 let oldServer = app.listen(config.port, () => {
   console.log(`服务启动成功 http://localhost:${config.port}`);
 });
 
-export { app, oldServer };
+export {
+  app,
+  oldServer
+};

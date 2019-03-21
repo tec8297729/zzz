@@ -33,7 +33,7 @@
     //   "src/",
     // ],
     // IOC容器修饰器需要使用
-    "types": ["reflect-metadata","node"],
+    "types": ["reflect-metadata","node","mocha"],
     // 启用VSCODE检查语法插件
     "plugins": [{
       "name": "typescript-tslint-plugin"

@@ -16,7 +16,8 @@
     "tslint2": "tslint --fix . src/**/*.ts src/**/*.tsx",
     "prettier": "prettier -l ./src/**/*",
     "build:prod": "npm run build:server && npm run build:client",
-    "test": "node ./dist/mochaRunner.js"
+    "test": "cross-env NODE_ENV=production node ./dist/mochaRunner.js",
+    "test2": "mocha ./src/webApp/**/*.spec.ts"
   },
   "author": "",
   "license": "ISC",

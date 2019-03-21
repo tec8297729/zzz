@@ -11,7 +11,8 @@ describe('node后台接口', function(){
     server.close();
     done();
   });
-
+// tslint:disable-next-line: no-invalid-this
+  this.timeout(5000);
   it('/table/list接口', function(done){
     request.get('/table/list')
     // .auth('username', 'password') // 登陆用户

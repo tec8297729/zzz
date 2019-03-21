@@ -7,7 +7,7 @@ const errorHandler = {
         await next();
       } catch (err) {
         logger.error(err);
-        console.log(err); // 测试查看用
+        // console.log(err); // 测试查看用
         console.log('容错层500')
         // 下看看公司需求显示页面
         ctx.status = err.status || 500; // 先读取报错状态,如果没就500
