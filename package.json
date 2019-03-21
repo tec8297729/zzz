@@ -4,6 +4,7 @@
   "main": "index.js",
   "scripts": {
     "dev:server": "cross-env NODE_ENV=production supervisor ./dist/app.js",
+    "dev:ts": "cross-env NODE_ENV=production ts-node ./dist/app.js",
     "dev:client": "webpack-dev-server --mode development",
     "build": "npm run clear && npm run build:server && npm run build:client",
     "build:server": "cross-env NODE_ENV=production gulp",
@@ -20,7 +21,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@types/node": "^10.12.30",
+    "@types/koa-router": "^7.0.40",
+    "@types/mocha": "^5.2.6",
+    "@types/node": "^10.14.1",
     "@types/react": "^16.8.7",
     "@types/react-dom": "^16.8.2",
     "@types/react-router-dom": "^4.3.1",
@@ -40,6 +43,9 @@
     "gulp-eslint": "^5.0.0",
     "gulp-rollup": "^2.16.2",
     "gulp-watch": "^5.0.1",
+    "inversify": "^5.0.1",
+    "inversify-binding-decorators": "^4.0.0",
+    "inversify-koa-utils": "^1.0.0",
     "jsonp": "^0.2.1",
     "koa": "^2.7.0",
     "koa-bodyparser": "^4.2.1",
@@ -49,6 +55,7 @@
     "lodash": "^4.17.11",
     "log4js": "^4.0.2",
     "moment": "^2.24.0",
+    "node-fetch": "^2.3.0",
     "path": "^0.12.7",
     "pm2": "^3.4.0",
     "react": "^16.8.4",
@@ -59,6 +66,8 @@
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
+    "reflect-metadata": "^0.1.13",
+    "ts-node": "^8.0.3",
     "workbox-webpack-plugin": "^4.1.0"
   },
   "devDependencies": {
@@ -79,6 +88,8 @@
     "css-loader": "^2.1.1",
     "eslint-plugin-react": "^7.12.4",
     "friendly-errors-webpack-plugin": "^1.7.0",
+    "gulp-strip-comments": "^2.5.2",
+    "gulp-typescript": "^5.0.1",
     "html-webpack-plugin": "^3.2.0",
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
@@ -116,4 +127,3 @@
   },
   "description": ""
 }
-

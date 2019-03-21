@@ -1,9 +1,9 @@
 let request = require('supertest');
-let chai = require('chai')
+var chai = require('chai')
   , expect = chai.expect
   , should = chai.should();
 const app = require('../app').app; // 这个是关键，启用app.js服务
-const server = require('../app').oldServer; // 这个是之前启动过的服务
+const server = require('../app').server; // 这个是之前启动过的服务
 request = request(app.listen()); // 请求本地node服务
 
 describe('node后台接口', function(){
@@ -11,7 +11,7 @@ describe('node后台接口', function(){
     server.close();
     done();
   });
-
+  
   it('/table/list接口', function(done){
     request.get('/table/list')
     // .auth('username', 'password') // 登陆用户

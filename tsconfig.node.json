@@ -11,12 +11,12 @@
       "dom.iterable",
       "scripthost"
     ],
-    "module": "es2015", // 采用的模块系统
+    "module": "commonjs", // 采用的模块系统
     "target": "es6", // 编译输出目标 ES 版本
     "moduleResolution": "node",
     "allowJs": true, // 允许编译javascript文件
     "pretty": true, // 给错误和消息设置样式，使用颜色和上下文
-    "jsx": "react",
+    // "jsx": "react",
     // "noImplicitReturns": true, // 不是函数的所有返回路径都有返回值时报错。
     "noImplicitThis": true,
     //【最佳实践】true打开的话对应我们要用任何的Library都需要.d.ts即使是空定义，放心可以下载。
@@ -33,7 +33,9 @@
     //   "src/",
     // ],
     // IOC容器修饰器需要使用
-    "types": ["reflect-metadata","node"],
+    "types": [
+      "reflect-metadata","node"
+    ],
     // 启用VSCODE检查语法插件
     "plugins": [{
       "name": "typescript-tslint-plugin"
@@ -41,11 +43,8 @@
   },
   "include": [ // 指定编译的文件夹
     "src/**/*.ts",
-    "src/**/*.js",
-    "src/**/*.tsx",
-    "src/**/*.vue",
-    "tests/**/*.ts",
-    "tests/**/*.tsx",
+    // "src/**/*.js",
+    "src/**/*.tsx"
   ],
   "typeRoots": [
     "node_modules/@types"

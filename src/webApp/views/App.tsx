@@ -39,7 +39,6 @@ export default class App extends React.Component<Props, object>{
   public isToken(){
     let that = this;
 
-
     // 获取token值
     localforage.getItem('UserdataToken').then(function(token) {
       // 当离线仓库中的值被载入时，此处代码运行
