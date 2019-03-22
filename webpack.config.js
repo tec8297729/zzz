@@ -137,7 +137,7 @@ let config = {
       // 复制文件到指定目录去，可多个
       {
         from: path.resolve(__dirname, './src/webApp/public'),
-        // 移动到public下面，由output.path决定的
+        // 移动到assets下面，由output.path决定的
         to: path.join('./'),
         cache: true // 缓存
       },
