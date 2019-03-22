@@ -138,7 +138,7 @@ let config = {
       {
         from: path.resolve(__dirname, './src/webApp/public'),
         // 移动到public下面，由output.path决定的
-        to: './',
+        to: path.join('./'),
         cache: true // 缓存
       },
     ]),
