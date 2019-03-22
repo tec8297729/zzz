@@ -13,7 +13,7 @@ module.exports = {
   },
   output: { // 打包输出目录及名称
     filename: '[name].[contenthash:5].js', // 生产环境就contenthash
-    path: path.resolve(__dirname, '../dist/assets'),
+    path: path.resolve(__dirname, '../dist/public'),
     chunkFilename: '[name].[contenthash:8].js',
     // libraryTarget: 'commonjs2' // 设置打包规范模式，common2是可以用在nodejs中的
   },

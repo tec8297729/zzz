@@ -11,7 +11,7 @@ interface Iconfig{
 }
 let config:Iconfig = {
   // 'viewDir' : path.join(__dirname, '../views'), // 模板文件目录
-  staticDir: path.join(__dirname, '../assets') // 静态资源目录
+  staticDir: path.join(__dirname, '../public') // 静态资源目录
 };
 
 // 正式上线环境变量

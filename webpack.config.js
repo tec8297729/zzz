@@ -136,9 +136,9 @@ let config = {
     new CopyWebpackPlugin([
       // 复制文件到指定目录去，可多个
       {
-        from: path.resolve(__dirname, './', 'src/webApp/public'),
-        // ./路径是在assets下面，由output.path决定的
-        to: './', // 移动到assets目录下
+        from: path.resolve(__dirname, './src/webApp/public'),
+        // 移动到public下面，由output.path决定的
+        to: './',
         cache: true // 缓存
       },
     ]),

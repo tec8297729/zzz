@@ -18,7 +18,7 @@ module.exports = {
   },
   output: { // 打包输出目录及名称
     filename: '[name].bundle.js', // 生产环境就不用hash了
-    path: path.join(__dirname, '../dist/assets'),
+    path: path.join(__dirname, '../dist/public'),
     // publicPath: '/public', // 打包后文件前缀
   },
   devServer: {
