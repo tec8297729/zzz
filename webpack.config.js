@@ -180,7 +180,9 @@ let config = {
       swDest: 'sw.js',
       clientsClaim: true,
       skipWaiting: true,
-      // include: [/\.html$/, /\.js$/]
+      // include: [/\.html$/, /\.js$/], // 只缓存js和html
+      // 排除图片不缓存
+      // exclude: [/\.(?:png|jpg|jpeg|svg)$/],
     })
   ],
   resolve: {
