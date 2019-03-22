@@ -30,7 +30,7 @@ let app = server.build(); // 服务koa服务
 
 
 // 启用服务
-let oldServer = app.listen(config.port, () => {
+let oldServer = app.listen(3000, () => {
   console.log(`服务启动成功 http://localhost:${config.port}`);
 });
 
