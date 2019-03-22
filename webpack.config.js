@@ -179,10 +179,11 @@ let config = {
     new GenerateSW({
       swDest: 'sw.js',
       clientsClaim: true,
-      skipWaiting: true,
-      // include: [/\.html$/, /\.js$/], // 只缓存js和html
+      skipWaiting: true, // 强制跳过生命周期
+      // include: [/\.html$/, /\.js$/, /\.css$/], // 只缓存js和html
       // 排除图片不缓存
       // exclude: [/\.(?:png|jpg|jpeg|svg)$/],
+      maximumFileSizeToCacheInBytes: 4 * 1024 * 1024, // 缓存大小空间4mb
     })
   ],
   resolve: {

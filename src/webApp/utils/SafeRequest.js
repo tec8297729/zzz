@@ -95,10 +95,7 @@ export default class SafeRequest{
             })
           }
         } else {
-          if(options.data.isShowLoading !== false){
-            loading = document.getElementById('ajaxLoading'); // 请求时loading处理
-            loading.style.display = 'none'; // 关闭加载图标
-          }
+          loading.style.display = 'none'; // 关闭加载图标
           reject(res.data); // 请求失败
         }
       })
