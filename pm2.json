@@ -16,6 +16,6 @@
     "NODE_ENV": "production"
   },
   "watch":true,
-  "instances":"1",
+  "instances":"max", // 以最大占用内存
   "exec_mode":"cluster"
 }

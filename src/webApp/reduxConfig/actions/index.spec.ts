@@ -1,5 +1,5 @@
 import * as actions from './index'
-import {SWITCH_MENU}  from '../constant/ActionTypes'; // 常量菜单
+import { SWITCH_MENU } from '../constant/ActionTypes'; // 常量菜单
 
 // 单测文件
 describe('todo actions', () => {
