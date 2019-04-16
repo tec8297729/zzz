@@ -128,5 +128,12 @@ class Utils {
       });
     }
   }
+
+  // 封装react懒加载组件语法
+  public lazyWithPreload(factory) {
+    const Component = React.lazy(factory);
+    Component.preload = factory;
+    return Component;
+  }
 }
 export default new Utils();

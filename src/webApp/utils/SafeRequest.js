@@ -77,10 +77,10 @@ export default class SafeRequest{
         params: (options.data && options.data.params) || '', // 有数据才存，否则空
       }).then((res) => {
         // 开关显示加载中的一层
-        if(options.data && options.data.isShowLoading !== false){
-          loading = document.getElementById('ajaxLoading'); // 请求时loading处理
-          loading.style.display = 'none'; // 关闭加载图标
-        }
+        // if(options.data && options.data.isShowLoading !== false){
+        loading = document.getElementById('ajaxLoading'); // 请求时loading处理
+        loading.style.display = 'none'; // 关闭加载图标
+        // }
 
         if (res.status == 200) {
           // 请求成功后
@@ -95,7 +95,6 @@ export default class SafeRequest{
             })
           }
         } else {
-          loading.style.display = 'none'; // 关闭加载图标
           reject(res.data); // 请求失败
         }
       })

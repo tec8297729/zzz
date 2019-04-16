@@ -15,7 +15,8 @@ import {
   message,
   InputNumber // 输入框数字组件，可按上下加减
 } from 'antd';
-import moment from 'moment';
+// import moment from 'moment'; // 时间处理组件
+const moment = React.lazy(() => import('moment'))
 
 const FormItem = Form.Item;
 const RadioGroup = Radio.Group;
@@ -27,12 +28,12 @@ interface IProps {
 }
 interface IState {
   // state?:any,
-  userImg:any,
-  loading:any
+  userImg?:any,
+  loading?:any
 }
 
-class FormRegister extends React.Component<IProps, IState> {
-  public state = {};
+class FormRegister extends React.Component<IProps> {
+  public state:IState = {};
 
   public render() {
     const { getFieldDecorator } = this.props.form; // antd框架双向数据绑定导入函数

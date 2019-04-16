@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const path = require('path');
 const merge = require('webpack-merge'); // 合并webpack配置插件
 const argv = require('yargs-parser')(process.argv.slice(2)); // 可以解析参数成对象，也可以读取到webpack系统变量
@@ -8,13 +9,14 @@ const _modeflag = (_mode == 'production' ? true : false); // 判断是否线上�
 const HtmlWebpackPlugin = require('html-webpack-plugin'); // 生成解析html页面
 const MiniCssExtractPlugin = require('mini-css-extract-plugin') // 引入分离打包CSS
 // const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin'); // 压缩css
+
 // const UglifyJsPlugin = require('uglifyjs-webpack-plugin') ; // 多核压缩
 const tsImportPluginFactory = require('ts-import-plugin'); // 抽离antd没用到的css
 // const { CheckerPlugin } = require('awesome-typescript-loader'); // 缓存编译ts
 
 const {GenerateSW} = require('workbox-webpack-plugin'); // PWA插件
 const CopyWebpackPlugin = require('copy-webpack-plugin'); // 复制目录插件
-
+const CompressionPlugin = require('compression-webpack-plugin'); // gzip压缩文件，打包出一份.gz文件，nginx开启gzip加载速度提升
 // 转换目录函数
 function resolve(relatedPath) {
   return path.resolve(__dirname, relatedPath);
@@ -66,7 +68,13 @@ let config = {
       // tsx文件解析使用ts-loader
       {
         test: /\.t(s|sx)?$/,
-        include: [resolve('src/')], // 只编译指定文件夹下的
+        include: [
+          resolve('src/'),
+          // resolve('./node_modules/antd'),
+          // resolve('./node_modules/draft-js'),
+          // resolve('./node_modules/react-draft-wysiwyg/dist/'),
+          // resolve('./node_modules/echarts'),
+        ], // 只编译指定文件夹下的
         use: [
           // 'cache-loader',
           {
@@ -132,6 +140,9 @@ let config = {
   },
   watch: !_modeflag, // 监听文件变化，如有变动实时编译
   plugins: [
+    // 处理moment插件被全量打包，按需打包功能
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+
     // 复制共用模板及不需要编译的JS文件
     new CopyWebpackPlugin([
       // 复制文件到指定目录去，可多个
@@ -139,9 +150,20 @@ let config = {
         from: path.resolve(__dirname, './src/webApp/public'),
         // 移动到assets下面，由output.path决定的
         to: path.join('./'),
-        cache: true // 缓存
+        cache: true, // 缓存
+        // transform (content, path) {
+        //   // 压缩、html hint
+        //   return Promise.resolve(optimize(content))
+        // },
       },
     ]),
+    // 文件gzip压缩
+    new CompressionPlugin({
+      // cache: true, // 启用缓存
+      algorithm: 'gzip',
+      threshold: 10240, // 大于此文件大写的才进行处理
+      minRatio: 0.8 // 压缩比例，默认0.8
+    }),
 
     // 生成HTML插件，指定HTML模板文件
     new HtmlWebpackPlugin({
@@ -174,7 +196,6 @@ let config = {
       filename: _modeflag ? 'css/[name].[contenthash:5].css' : 'css/[name].css',
       chunkFilename: _modeflag ? 'css/[name].[contenthash:5].css' : 'css/[name].css'
     }),
-
     // 启用PWA服务
     new GenerateSW({
       swDest: 'sw.js',
@@ -183,7 +204,7 @@ let config = {
       // include: [/\.html$/, /\.js$/, /\.css$/], // 只缓存js和html
       // 排除图片不缓存
       // exclude: [/\.(?:png|jpg|jpeg|svg)$/],
-      maximumFileSizeToCacheInBytes: 4 * 1024 * 1024, // 缓存大小空间4mb
+      // maximumFileSizeToCacheInBytes: 4 * 1024 * 1024, // 缓存大小空间4mb
     })
   ],
   resolve: {
@@ -226,13 +247,11 @@ let config = {
     //     }
     //   },
     // },
-
     // 单独把runtime核心包提取成一个单独文件，放入页面（webpack运行时核心文件）
-    runtimeChunk: {
-      name: 'runtime'
-    },
+    // runtimeChunk: {
+    //   name: 'runtime'
+    // },
     // nodeEnv: 'production', // 移除无用的框架的代码的警告
-
     // 多核压缩
     // minimizer: [
     //   new UglifyJsPlugin({

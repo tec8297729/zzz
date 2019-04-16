@@ -48,10 +48,12 @@ class SafeRequest implements ISafeRequest {
         // .then(res => res.json())
         .then(json => {
           // if(body.code == 200){ // 还可以在判断后端数据状态
+          console.log('到了返回层')
           resolve(json); // 返回请求后的数据体
           // }
         })
         .catch(error => {
+          console.log('到了错误层')
           result.code = 2;
           result.message = 'node-fetch请求失败,后端报警-请求挂了';
           result.data = error;

@@ -11,7 +11,7 @@
       "dom.iterable",
       "scripthost"
     ],
-    "module": "es2015", // 采用的模块系统
+    "module": "esnext", // 采用的模块系统
     "target": "es6", // 编译输出目标 ES 版本
     "moduleResolution": "node",
     "allowJs": true, // 允许编译javascript文件
@@ -26,7 +26,7 @@
     "allowSyntheticDefaultImports": true, // 允许从没有设置默认导出的模块中默认导入
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-
+    
     // 每当编译器在某一rootDirs的子目录下发现了相对模块导入，它就会尝试从每一个rootDirs中导入。
     // 例如场景构建中的会将某些文件夹,输出拷贝到同一个目录下
     // "rootDirs": [

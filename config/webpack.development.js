@@ -25,7 +25,7 @@ module.exports = {
     contentBase: path.join(__dirname, '../dist'), //默认会以根文件夹提供本地服务器，这里指定文件夹
     historyApiFallback: true, //在开发单页应用时非常有用，它依赖于HTML5 history API，如果设置为true，所有的跳转将指向index.html
     publicPath: '/',
-    compress: true,
+    compress: true, //启用 gzip 压缩
     port: 8888, //如果省略，默认8080
     hot: true, // 开启热模块替换
     overlay: {
