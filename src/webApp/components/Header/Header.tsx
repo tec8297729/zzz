@@ -2,10 +2,12 @@ import * as React from 'react';
 import { Row, Col } from 'antd';
 import Utils from '../../utils/utils'; // 公用方法
 import { NavLink } from 'react-router-dom';
-import './header.less';
+import './Header.less';
 import SafeRequest from '../../utils/SafeRequest';
 import { connect } from 'react-redux';
-
+import localforage from "localforage";
+// 单次设置方式：设置存储优先级排序，如果设置一个就只能使用一种方式存储
+localforage.setDriver([localforage.LOCALSTORAGE, localforage.INDEXEDDB]);
 interface Props {
   menuType?: any;
   menuName?: any;
@@ -42,8 +44,7 @@ class Header extends React.Component<Props, State> {
           )}
           <Col span={menuType ? 18 : 24}>
             <span>欢迎 {this.state.userName}</span>
-            {/* <a href="http://"></a> */}
-            <NavLink to="/login">退出</NavLink>
+            <NavLink to="/login" onClick={this.userExit}>退出</NavLink>
           </Col>
         </Row>
         {// 如果有传入导航参数过来，头部显示为空
@@ -69,7 +70,7 @@ class Header extends React.Component<Props, State> {
   // 组件将要挂载之前触发
   public componentWillMount(): void {
     this.setState({
-      userName: '河中一天'
+      userName: '用户昵称'
     });
     // 每次更新时间
     setInterval(() => {
@@ -87,7 +88,7 @@ class Header extends React.Component<Props, State> {
   public getWeatherAPI() {
     let city = '北京';
     SafeRequest.jsonp({
-      url: `http://api.map.baidu.com/telematics/v3/weather?location=${encodeURIComponent(
+      url: `https://api.map.baidu.com/telematics/v3/weather?location=${encodeURIComponent(
         city
       )}&output=json&ak=iKveoNoN8IsMVDWMSxBZ2baDwCfrgNGv`
     }).then(res => {
@@ -99,6 +100,12 @@ class Header extends React.Component<Props, State> {
         });
       } else {
       }
+    });
+  }
+  // 用户退出登陆事件
+  public userExit = ()=>{
+    localforage.removeItem('UserdataToken').then((e)=>{
+      console.log('退出登陆');
     });
   }
 }

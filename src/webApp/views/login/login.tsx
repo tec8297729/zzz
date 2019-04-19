@@ -7,14 +7,14 @@ import Footer from '../../components/Footer/Footer';
 import './login.less'; // 引入样式文件
 const FormItem = Form.Item;
 
-// 定义组件props
-interface Props {
+// 接口
+interface IState {
   name?: String;
   errorMsg?: any;
 }
 
 export default class Login extends React.Component {
-  public state = {};
+  public state:IState = {};
 
   public componentDidMount() {
     // 每次进入登录页清除之前的登录信息
@@ -40,7 +40,6 @@ export default class Login extends React.Component {
       <div className="login-page">
         <div className="login-header">
           <div className="logo">
-            <img src="/assets/logo-ant.svg" alt="慕课后台管理系统" />
             React全家桶 管理系统
           </div>
         </div>
@@ -73,6 +72,7 @@ interface LoginFormProps {
     validateFieldsAndScroll: Function;
     getFieldsValue: Function;
     loginSubmit: Function;
+    getFieldDecorator?: any;
   };
 }
 class LoginForm extends React.Component<LoginFormProps> {

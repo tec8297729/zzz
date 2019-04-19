@@ -112,17 +112,17 @@ export default class City extends React.Component {
         title: '授权加盟商',
         dataIndex: 'franchisee_name'
       },
-      {
-        title: '城市管理员',
-        dataIndex: 'city_admins',
-        render(arr) {
-          return arr
-            .map(item => {
-              return item.user_name;
-            })
-            .join(',');
-        }
-      },
+      // {
+      //   title: '城市管理员',
+      //   dataIndex: 'city_admins',
+      //   render(arr) {
+      //     return arr
+      //       .map(item => {
+      //         return item.user_name;
+      //       })
+      //       .join(',');
+      //   }
+      // },
       {
         title: '城市开通时间',
         dataIndex: 'open_time'

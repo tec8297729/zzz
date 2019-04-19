@@ -48,12 +48,12 @@ class App extends React.Component<IProps>{
   // 组件显示之后，组件第一次渲染完成触发
   public componentWillMount(): void {
     // 处理页面路由地址，只获取最前面部份参数，用于redux，右侧显示文字也变类目
-    // let currentKey = window.location.hash.replace(/#|\?.*$/g,''); // 获取页面地址相当于默认值选中右侧菜单项
+    let currentKey = window.location.hash.replace(/#|\?.*$/g,''); // 获取页面地址相当于默认值选中右侧菜单项
     const menuTreeNode = this.renderMenu(menuList); // 所有菜单的数据
     // 存放数据
     this.setState({
       menuTreeNode,
-      // currentKey
+      currentKey
     });
   }
 

@@ -1,0 +1,55 @@
+{
+  // 编译选项配置
+  "compilerOptions": {
+    "outDir": "./dist/", // 输出目录
+    "baseUrl": ".", // 解析非相对模块名的基准目录,相当于加了前缀
+    "sourceMap": true, // 把ts编译成js的时候，同时生成对应的sourceMap文件,方便排错
+    // 编译过程中需要引入的库文件的列表
+    "lib": [
+      "es2015",
+      "dom",
+      "dom.iterable",
+      "scripthost"
+    ],
+    "module": "commonjs", // 采用的模块系统
+    "target": "es6", // 编译输出目标 ES 版本
+    "moduleResolution": "node",
+    "allowJs": true, // 允许编译javascript文件
+    "pretty": true, // 给错误和消息设置样式，使用颜色和上下文
+    // "jsx": "react",
+    // "noImplicitReturns": true, // 不是函数的所有返回路径都有返回值时报错。
+    "noImplicitThis": true,
+    //【最佳实践】true打开的话对应我们要用任何的Library都需要.d.ts即使是空定义，放心可以下载。
+    "noImplicitAny": false, // 是否在表达式和声明上有隐含的any类型时报错
+    "isolatedModules": false, // 将每个文件作为单独的模块
+    "esModuleInterop": true, //导入语法 import foo from "foo"
+    "allowSyntheticDefaultImports": true, // 允许从没有设置默认导出的模块中默认导入
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+
+    // 每当编译器在某一rootDirs的子目录下发现了相对模块导入，它就会尝试从每一个rootDirs中导入。
+    // 例如场景构建中的会将某些文件夹,输出拷贝到同一个目录下
+    // "rootDirs": [
+    //   "src/",
+    // ],
+    // IOC容器修饰器需要使用
+    "types": [
+      "reflect-metadata","node"
+    ],
+    // 启用VSCODE检查语法插件
+    "plugins": [{
+      "name": "typescript-tslint-plugin"
+    }]
+  },
+  "include": [ // 指定编译的文件夹
+    "src/**/*.ts",
+    // "src/**/*.js",
+    "src/**/*.tsx"
+  ],
+  "typeRoots": [
+    "node_modules/@types"
+  ],
+  "exclude": [ // 排除指定文件夹不TS编译
+    "node_modules",
+  ]
+}

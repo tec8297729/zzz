@@ -5,7 +5,7 @@ import SafeRequest from '../../utils/SafeRequest';
 import menuConfig from '../../config/menuConfig';
 import Utils from '../../utils/utils';
 // 分离的几个功能组件
-import PermEditForm from './PermEditForm'; // 显示所有用户列表
+import PermEditForm from './permEditForm'; // 显示所有用户列表
 import RoleForm from './roleForm'; // 用户权限
 import RoleAuthForm from './roleAuthForm'; // 用户授权
 // import Item from 'antd/lib/list/Item';

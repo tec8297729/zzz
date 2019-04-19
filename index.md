@@ -52,3 +52,6 @@ D:\myphp_www\PHPTutorial\WWW\项目测试\共享单车后台管理系统
 ├─tsconfig.json
 ├─tslint.json
 ├─webpack.config.js
+
+自动化构建流程发布的，手动发布把打包好的dist目录放到服务器antd目录内
+如果直接打包的客户端文件，打包好后放入到assets静态目录内
