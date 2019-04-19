@@ -28,7 +28,8 @@ class IndexController implements interfaces.Controller {
   // 主页
   public async actionIndex(ctx, next) {
     const html = await ctx.render('index.html');
-    // console.log(html);
+    // ctx.response.type
+    console.log(ctx.response.type);
     ctx.body = html;
   }
 
