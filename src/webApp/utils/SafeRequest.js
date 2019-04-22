@@ -49,7 +49,7 @@ export default class SafeRequest{
       });
     });
   }
-
+  
   // 封装axios请求的mock数据
   static ajax(options) {
     let loading;

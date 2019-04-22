@@ -31,37 +31,14 @@ import OrderDetail from '../views/order/detail'; // 用户订单页面
 import User from '../views/user/user'; // 员工表单页面
 import BikeMap from '../views/map/bikeMap'; // 地图-车辆地图分布
 
-// const Buttons = React.lazy(() => import('../views/ui/buttons/buttons'));
-// const Modals = React.lazy(() => import('../views/ui/modals/modals'));
-// const Loadings = React.lazy(() => import('../views/ui/loadings/loadings'));
-// const Notice = React.lazy(() => import('../views/ui/notice/notice'));
-// const Messages = React.lazy(() => import('../views/ui/messages/messages'));
-// const Tabs = React.lazy(() => import('../views/ui/tabs/tabs'));
-// const Gallery = React.lazy(() => import('../views/ui/gallery/gallery'));
-// const Carousel = React.lazy(() => import('../views/ui/carousel/carousel'));
-// const FormLogin = React.lazy(() => import('../views/form/login'));
-// const Register = React.lazy(() => import('../views/form/register'));
-// const BasicTable = React.lazy(() => import('../views/table/basicTable'));
-// const HighTable = React.lazy(() => import('../views/table/highTable'));
-// const City = React.lazy(() => import('../views/city/city'));
-// const Order = React.lazy(() => import('../views/order/order'));
-// const OrderDetail = React.lazy(() => import('../views/order/detail'));
-// const User = React.lazy(() => import('../views/user/user'));
-// const BikeMap = React.lazy(() => import('../views/map/bikeMap'));
 
 // 图表组件
 import Bar from '../views/echarts/bar/bar'; // 图表柱
 import Pie from '../views/echarts/pie/pie'; // 图表饼
 import Line from '../views/echarts/line/line'; // 图表饼
-// const Bar = React.lazy(() => import('../views/echarts/bar/bar'));
-// const Pie = React.lazy(() => import('../views/echarts/pie/pie'));
-// const Line = React.lazy(() => import('../views/echarts/line/line'));
 // 富文本编辑器
 import Rich from '../views/permission';
 import Permission from '../views/permission'; // 权限控制
-
-// const Rich = React.lazy(() => import('../views/permission'));
-// const Permission = React.lazy(() => import('../views/permission'));
 
 // 配置路由页面
 export default class RoutersConfig extends React.Component {

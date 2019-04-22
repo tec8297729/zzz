@@ -1,9 +1,11 @@
 import * as React from 'react';
 import './home.less';
 
-// interface Props {}
+interface Props {
+  history?: any
+}
 
-export default class App extends React.Component<object> {
+export default class App extends React.Component<Props> {
   public constructor(props){
     super(props);
   }
@@ -11,9 +13,12 @@ export default class App extends React.Component<object> {
     return (
       <div className="home-wrap">
         <div>欢迎进入后台管理系统</div>
+        {/* <button onClick={this.tapNav}>跳转页面</button> */}
       </div>
     );
   }
-  // 组件显示之后，组件第一次渲染完成触发
-  public componentDidMount ():void {}
+  // public tapNav = (e) => {
+  //   console.log('点击', this.props)
+  //   this.props.history.push('/login'); 
+  // }
 }

@@ -21,12 +21,13 @@ module.exports = {
     path: path.join(__dirname, '../dist/assets'),
     // publicPath: '/public', // 打包后文件前缀
   },
+  // 测试npm run dev:client可以直接访问，前提开启node层就好了，但不访问node端口页面
   devServer: {
     contentBase: path.join(__dirname, '../dist'), //默认会以根文件夹提供本地服务器，这里指定文件夹
     historyApiFallback: true, //在开发单页应用时非常有用，它依赖于HTML5 history API，如果设置为true，所有的跳转将指向index.html
     publicPath: '/',
     compress: true, //启用 gzip 压缩
-    port: 8888, //如果省略，默认8080
+    port: 8888, // 端口号，默认8080
     hot: true, // 开启热模块替换
     overlay: {
       // 只显示错误信息，wran警告不显示

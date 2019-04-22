@@ -53,7 +53,7 @@ class App extends React.Component<IProps>{
     // 存放数据
     this.setState({
       menuTreeNode,
-      currentKey
+      currentKey: [currentKey]
     });
   }
 
