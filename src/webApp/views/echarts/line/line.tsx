@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Card } from 'antd';
 // 按需加载，先加载核心库
-// import echarts from 'echarts/lib/echarts';
-const echarts = React.lazy(() => import('echarts/lib/echarts'));
+import echarts from 'echarts/lib/echarts';
+// const echarts = React.lazy(() => import('echarts/lib/echarts'));
 // 导入拆线图功能
 // import 'echarts/lib/chart/line';
 import(/* webpackPrefetch: true */ 'echarts/lib/chart/line');
@@ -16,8 +16,8 @@ import(/* webpackPrefetch: true */ 'echarts/lib/component/title');
 import(/* webpackPrefetch: true */ 'echarts/lib/component/legend');
 import(/* webpackPrefetch: true */ 'echarts/lib/component/markPoint');
 
-const ReactEcharts = React.lazy(() => import('echarts-for-react'));
-// import ReactEcharts from 'echarts-for-react'; // react版本的echarts，可以组件化
+// const ReactEcharts = React.lazy(() => import('echarts-for-react'));
+import ReactEcharts from 'echarts-for-react'; // react版本的echarts，可以组件化
 import echartTheme from '../echartTheme'; // 图片自定义颜色
 
 // interface IProps {}

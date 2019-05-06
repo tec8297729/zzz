@@ -8,6 +8,7 @@
     "react-hot-loader/babel",
     // "transform-runtime",
     // "transform-decorators-legacy",
+    "syntax-dynamic-import",
     [
       "import",
       {

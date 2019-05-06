@@ -205,6 +205,55 @@ let config = {
       // 排除图片不缓存
       // exclude: [/\.(?:png|jpg|jpeg|svg)$/],
       // maximumFileSizeToCacheInBytes: 4 * 1024 * 1024, // 缓存大小空间4mb
+      // 通过传入urlPatterns、handlers和可用的一些options，在生成的service worker中去添加适当的代码来处理运行时的缓存。
+      // runtimeCaching: [{
+      //   // 匹配包含`api`的任何同源请求。
+      //   urlPattern: '/', // 可以使用正则new RegExp('^https://cors\.example\.com/')
+      //   // NetworkFirst应用网络优先策略。
+      //   handler: 'NetworkFirst', // 可以跨域staleWhileRevalidate
+      //   options: {
+      //     // 超过10s使用缓存做为回退方案。
+      //     networkTimeoutSeconds: 10,
+      //     // 为此路由指定自定义缓存名称。
+      //     cacheName: 'my-api-cache',
+      //     // 配置自定义缓存过期。
+      //     expiration: {
+      //       maxEntries: 100, // 缓存条数限制（超过会删除最旧的一条）
+      //       maxAgeSeconds: 24 * 60 * 60, // 缓存时间（秒） 24小时
+      //     },
+      //     // 配置background sync.
+      //     // backgroundSync: {
+      //     //   name: 'my-queue-name',
+      //     //   options: {
+      //     //     maxRetentionTime: 60 * 60,
+      //     //   },
+      //     // },
+      //     // 配置哪些response是可缓存的。
+      //     cacheableResponse: {
+      //       statuses: [0, 200],
+      //       // headers: {'x-test': 'true'},
+      //     },
+      //     // 配置广播缓存更新插件。
+      //     // broadcastUpdate: {
+      //     //   channelName: 'my-update-channel',
+      //     // },
+      //     // // 添加您需要的任何其他逻辑插件。
+      //     // plugins: [
+      //     //   {cacheDidUpdate: () => /* 自定义插件代码 */}
+      //     // ],
+      //     // // matchOptions 和 fetchOptions 用于配置 handler.
+      //     // fetchOptions: {
+      //     //   mode: 'no-cors',
+      //     // },
+      //     // matchOptions: {
+      //     //   ignoreSearch: true,
+      //     // },
+      //   }
+      // }],
+      // // 指定部份URL以外的才缓存，以`/_`开头或包含`admin`的URL，加入黑名单，优先级最高
+      // navigateFallbackBlacklist: [/^\/_/, /admin/],
+      // // 以`/pages`开头的URL加入白名单, 优先级没上面的高
+      // navigateFallbackWhitelist: [/^\/pages/]
     })
   ],
   resolve: {

@@ -17,7 +17,7 @@ module.exports = {
   output: { // 打包输出目录及名称
     filename: '[name].[contenthash:5].js', // 生产环境就contenthash
     path: path.resolve(__dirname, '../dist/assets'),
-    chunkFilename: '[name].[contenthash:8].js',
+    chunkFilename: '[name].[contenthash:5].js',
     // libraryTarget: 'commonjs2' // 设置打包规范模式，common2是可以用在nodejs中的
   },
   plugins: [
@@ -31,7 +31,7 @@ module.exports = {
   ],
   // 文件超过250k关闭警告提示
   performance: {
-    hints: process.env.NODE_ENV === 'production' ? "warning" : false
+    hints: process.env.NODE_ENV === 'production' ? 'warning' : false
   },
   // 打包优化配置
   optimization: {

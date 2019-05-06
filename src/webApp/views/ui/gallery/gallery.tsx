@@ -26,7 +26,7 @@ export default class Gallery extends React.Component {
       ['21.png', '22.png', '23.png', '24.png', '25.png']
     ];
     const imgList = imgs.map(list =>
-      list.map(item => (
+      list.map((item, index) => (
         <Card
           style={{ marginBottom: 10 }}
           cover={
@@ -35,6 +35,7 @@ export default class Gallery extends React.Component {
               onClick={() => this.openGallery(item)}
             />
           }
+          key={index}
         >
           <Card.Meta title="卡片标题" description="卡片内容区域" />
         </Card>

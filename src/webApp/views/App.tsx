@@ -1,6 +1,6 @@
 import * as React from 'react';
 // import {withRouter } from 'react-router';
-// import localforage from 'localforage'; // 缓存插件
+import localforage from 'localforage'; // 缓存插件
 // // 设置数据库存放顺序
 // localforage.setDriver([
 //   localforage.LOCALSTORAGE,

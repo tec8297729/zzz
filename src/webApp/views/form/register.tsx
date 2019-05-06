@@ -15,8 +15,8 @@ import {
   message,
   InputNumber // 输入框数字组件，可按上下加减
 } from 'antd';
-// import moment from 'moment'; // 时间处理组件
-const moment = React.lazy(() => import('moment'))
+import moment from 'moment'; // 时间处理组件
+// const moment = React.lazy(() => import('moment')) // 懒加载组件
 
 const FormItem = Form.Item;
 const RadioGroup = Radio.Group;

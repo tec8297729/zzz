@@ -20,6 +20,8 @@ module.exports = {
     filename: '[name].bundle.js', // 生产环境就不用hash了
     path: path.join(__dirname, '../dist/assets'),
     // publicPath: '/public', // 打包后文件前缀
+    // 添加 chunkFilename
+    chunkFilename: '[name].chunk.js',
   },
   // 测试npm run dev:client可以直接访问，前提开启node层就好了，但不访问node端口页面
   devServer: {

@@ -1,13 +1,13 @@
 import JsonP from 'jsonp';
 import axios from 'axios';
-import {Modal} from 'antd';
+import { Modal } from 'antd';
 import Utils from './utils';
 
 
-export default class SafeRequest{
+export default class SafeRequest {
 
   // 封装请求接口，请求列表数据请求处理
-  static requestList(_this, url, params, isMock){
+  static requestList (_this, url, params, isMock) {
     let data = {
       params,
       isMock // 根据此值判断是否使用mock数据
@@ -15,10 +15,10 @@ export default class SafeRequest{
     this.ajax({
       url,
       data,
-    }).then((data)=>{
-      if(data && data.result){
+    }).then((data) => {
+      if (data && data.result) {
         // 获取数据中的item_list字段循环
-        let list = data.result.item_list.map((item,index)=>{
+        let list = data.result.item_list.map((item, index) => {
           item.key = index;
           return item;
         });
@@ -35,7 +35,7 @@ export default class SafeRequest{
   }
 
   // 跨域请求接口
-  static jsonp(opts) {
+  static jsonp (opts) {
     return new Promise((resolve, reject) => {
       JsonP(opts.url, {
         param: 'callback',
@@ -49,20 +49,20 @@ export default class SafeRequest{
       });
     });
   }
-  
+
   // 封装axios请求的mock数据
-  static ajax(options) {
+  static ajax (options) {
     let loading;
     let baseApi;
     // 当设置了isShowLoading参数false就不显示加载数据图标层
-    if(options.data && options.data.isShowLoading !== false){
+    if (options.data && options.data.isShowLoading !== false) {
       loading = document.getElementById('ajaxLoading'); // 请求时loading处理
       loading.style.display = 'block'; // 显示
     }
     // 模拟数据直接读取
-    if(options.isMock){
+    if (options.isMock) {
       // baseApi = 'https://www.easy-mock.com/mock/5c822903e2062b28ed86bda7/mockapi';
-    }else{
+    } else {
       // 不使用mock数据的正式环境，请求前缀
       // baseApi = 'https://www.easy-mock.com/mock/5a7278e28d0c633b9c4adbd7/api';
     }
