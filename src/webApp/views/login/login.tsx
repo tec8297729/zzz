@@ -33,7 +33,7 @@ export default class Login extends React.Component {
       // 存完token跳到指定页面去
       window.location.href = '/#/'; // 跳转到后台首页
     });
-  };
+  }
 
   public render() {
     return (
@@ -105,7 +105,7 @@ class LoginForm extends React.Component<LoginFormProps> {
         }
       }
     });
-  };
+  }
 
   public checkUsername = (rule, value, callback) => {
     let reg = /^\w+$/;
@@ -116,7 +116,7 @@ class LoginForm extends React.Component<LoginFormProps> {
     } else {
       callback();
     }
-  };
+  }
 
   public checkPassword = (rule, value, callback) => {
     if (!value) {
@@ -124,7 +124,7 @@ class LoginForm extends React.Component<LoginFormProps> {
     } else {
       callback();
     }
-  };
+  }
 
   public render() {
     const { getFieldDecorator } = this.props.form;

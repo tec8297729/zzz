@@ -188,5 +188,5 @@ describe('node后台接口', function(){
     });
   });
 
-})
+});
 

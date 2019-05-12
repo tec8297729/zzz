@@ -37,7 +37,7 @@ const loginit = app => {
         logger.error(err.status + '--server error:' + ctx);
       }
     });
-  }
+  };
   // 只会记录error级别以上的错误
   // 中间件容错处理各种状态码
   errorHandler.error(app, logger);

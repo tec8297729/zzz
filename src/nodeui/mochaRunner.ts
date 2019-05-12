@@ -21,5 +21,5 @@ mocha.run(function (errorLenth) {
     console.log('单元测试成功');
     process.exit(); // 退出进程，这是系统正常退出
   }
-})
+});
 

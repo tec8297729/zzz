@@ -1,7 +1,7 @@
 import * as React from 'react';
 // 引入路由相关一些组件
 import { BrowserRouter, Switch, Route, HashRouter, Redirect } from 'react-router-dom';
-import Loadable from 'react-loadable' // 懒加载组件
+import Loadable from 'react-loadable'; // 懒加载组件
 // 骨架组件
 import App from '@views/App'; // 根组件
 // import NoMatch from '@views/noMatch/noMatch'; // 容错404页面
@@ -136,11 +136,11 @@ const Bar = Loadable({
 });
 const Pie = Loadable({
   loader: () => import('@views/echarts/pie/pie'),
-  loading: Loading, 
+  loading: Loading,
 });
 const Line = Loadable({
   loader: () => import('@views/echarts/line/line'),
-  loading: Loading, 
+  loading: Loading,
 });
 
 
@@ -149,11 +149,11 @@ const Line = Loadable({
 // import Permission from '@views/permission'; // 权限控制
 const Rich = Loadable({
   loader: () => import('@views/rich/rich'), // 富文本编辑器
-  loading: Loading, 
+  loading: Loading,
 });
 const Permission = Loadable({
   loader: () => import('@views/permission'), // 权限控制
-  loading: Loading, 
+  loading: Loading,
 });
 
 // 配置路由页面

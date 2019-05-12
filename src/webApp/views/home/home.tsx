@@ -19,6 +19,6 @@ export default class App extends React.Component<Props> {
   }
   // public tapNav = (e) => {
   //   console.log('点击', this.props)
-  //   this.props.history.push('/login'); 
+  //   this.props.history.push('/login');
   // }
 }

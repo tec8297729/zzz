@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import './Header.less';
 import SafeRequest from '../../utils/SafeRequest';
 import { connect } from 'react-redux';
-import localforage from "localforage";
+import localforage from 'localforage';
 // 单次设置方式：设置存储优先级排序，如果设置一个就只能使用一种方式存储
 localforage.setDriver([localforage.LOCALSTORAGE, localforage.INDEXEDDB]);
 interface Props {

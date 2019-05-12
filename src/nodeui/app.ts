@@ -11,7 +11,7 @@ import './ioc/loader'; // 容器配置文件，把所有路由放进去
 // IOC控制反转
 const container = new Container(); // 创建了一个容器
 // 把所有的类给build进来容器中
-container.load( buildProviderModule() )
+container.load( buildProviderModule() );
 // 创建一个koa服务，并且把容器放入来
 let server = new InversifyKoaServer(container);
 
@@ -24,7 +24,7 @@ server.setConfig(app=>{
 .setErrorConfig(app=>{
   // 当出错的时候
   console.log(app);
-})
+});
 
 let app = server.build(); // 服务koa服务
 

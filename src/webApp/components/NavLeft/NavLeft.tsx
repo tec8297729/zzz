@@ -5,7 +5,7 @@ import menuList from '../../config/menuConfig'; // 权限控制数据
 import './NavLeft.less';
 // redux引用的功能
 import { connect } from 'react-redux';
-import { switchMenu } from '../../reduxConfig/actions' // 引入需要使用的actions动作
+import { switchMenu } from '../../reduxConfig/actions'; // 引入需要使用的actions动作
 
 const SubMenu = Menu.SubMenu;
 
@@ -94,18 +94,18 @@ const mapStateToProps = (state, ownProps) => {
   return ({
     // state是原数据，ownProps是传入的数据，二者对比生成新的数据（过滤）
     active: ownProps.filter === state.visibilityFilter
-  })
-}
+  });
+};
 // 2、生成指令，内部处理改变state值（dispatch, 用户传入的值）
 const mapDispatchToProps = (dispatch, ownProps) => {
   // ownProps是使用此组件传入的参数(actions名称)
   return ({
     // 触发动作事件， 使用 this.props.onClick函数
     onClickSwitchMenu: (name) => {
-      return dispatch( switchMenu(name) )
+      return dispatch( switchMenu(name) );
     }
-  })
-}
+  });
+};
 
 // 上面二函数合依次放入connect合并
 export default connect( )(App);
