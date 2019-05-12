@@ -67,6 +67,6 @@
     "prefer-object-spread": false,
     // "no-submodule-imports": [true, "@components", "@src"],
     // "no-implicit-dependencies": [true, ["@components", "@"]]
-    "no-implicit-dependencies": false, // 禁止在项目的package.json中导入未列为依赖项的模块
+    "no-implicit-dependencies": false // 禁止在项目的package.json中导入未列为依赖项的模块
   }
 }

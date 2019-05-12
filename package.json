@@ -1,6 +1,8 @@
 {
   "name": "antdadmin",
   "version": "1.0.0",
+  "author": "",
+  "license": "ISC",
   "main": "index.js",
   "scripts": {
     "dev:server": "cross-env NODE_ENV=production supervisor ./dist/app.js",
@@ -21,8 +23,12 @@
     "test": "cross-env NODE_ENV=production node ./dist/mochaRunner.js",
     "test2": "mocha ./src/webApp/**/*.spec.ts"
   },
-  "author": "",
-  "license": "ISC",
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run tslint",
+      "pre-push": "npm run tslint"
+    }
+  },
   "dependencies": {
     "@types/koa-router": "^7.0.40",
     "@types/mocha": "^5.2.6",
@@ -48,6 +54,7 @@
     "gulp-eslint": "^5.0.0",
     "gulp-rollup": "^2.16.2",
     "gulp-watch": "^5.0.1",
+    "husky": "^2.2.0",
     "inversify": "^5.0.1",
     "inversify-binding-decorators": "^4.0.0",
     "inversify-koa-utils": "^1.0.0",

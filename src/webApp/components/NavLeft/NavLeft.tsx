@@ -5,7 +5,7 @@ import menuList from '../../config/menuConfig'; // 权限控制数据
 import './NavLeft.less';
 // redux引用的功能
 import { connect } from 'react-redux';
-import { switchMenu } from '../../reduxConfig/actions'; // 引入需要使用的actions动作
+import { switchMenu } from '../../reduxConfig/actions' // 引入需要使用的actions动作
 
 const SubMenu = Menu.SubMenu;
 
