@@ -1,0 +1,95 @@
+@imgWidth: 150px;
+@imgHeight: 106px;
+
+.uploadWrap {
+  // 上传按钮
+  // .uploadImg_btn {
+  //   display: inline-block;
+  //   // float: left;
+  //   width: 134px;
+  //   // margin-right: 5px;
+  //   // margin-left: 10px;
+  //   // height: @imgHeight;
+  // }
+
+  :global {
+    // 整体布局
+    .ant-upload-list-picture-card {
+      float: none; // 重置属性
+    }
+
+    // 上传按钮外层
+    .ant-upload-select-picture-card {
+      display: inline-block;
+      margin-right: 10px;
+      width: @imgWidth;
+      height: @imgHeight;
+
+      // 内层文字区域
+      & .ant-upload {
+        display: initial;
+      }
+    }
+
+    // 缩略图片样式
+    .ant-upload-list-item {
+      width: @imgWidth;
+      height: @imgHeight;
+    }
+
+    // 缩略图内部图片铺满
+    .ant-upload-list-item-info span img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      display: block;
+      min-width: 100%;
+      min-height: 100%;
+      transform: translate(-50%, -50%);
+    }
+
+    // 隐藏删除按钮
+    .anticon-delete {
+      display: none;
+    }
+  }
+}
+
+// 左右切换icon
+.modal_wrap {
+  position: relative;
+
+  // .needIcon_wrap {
+  //   margin-top: -20px;
+  //   padding: 10px 0;
+  //   font-size: 30px;
+  // }
+
+  .needIcon_wrap {
+    position: absolute;
+    padding: 10px 0;
+    font-size: 30px;
+    color: #40a9ff;
+    z-index: 99999;
+  }
+
+  .needIcon_leftEnd,
+  .needIcon_rightEnd {
+    color: #cdcdcd;
+    cursor: default;
+  }
+
+  .needIcon_left,
+  .needIcon_leftEnd {
+    top: 50%;
+    left: 0;
+    transform: translate(0, -50%);
+  }
+
+  .needIcon_right,
+  .needIcon_rightEnd {
+    top: 50%;
+    right: 0;
+    transform: translate(0, -50%);
+  }
+}

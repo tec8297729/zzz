@@ -1,6 +1,6 @@
 import koa from 'koa';
 import statics from 'koa-static'; // 静态目录中间件
-// // 以下非koa组件
+// 以下非koa组件
 import { loginit } from './log4js'; // 打印错误日志配置
 import bodyParser from 'koa-bodyparser'; // 解析POST数据请求
 import config from './config'; // 配置node文件

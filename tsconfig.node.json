@@ -41,6 +41,10 @@
       "name": "typescript-tslint-plugin"
     }]
   },
+  // 测试编译别名，不会编译
+  // "paths": {
+  //   "@ioc": "./src/nodeui/ioc" // 此处映射是相对于"baseUrl"
+  // },
   "include": [ // 指定编译的文件夹
     "src/**/*.ts",
     // "src/**/*.js",

@@ -6,6 +6,12 @@ var gulp = require('gulp'),
   ts = require('gulp-typescript'), // ts编译
   eslint = require('gulp-eslint'), // 语法检查
   strip = require('gulp-strip-comments') // 删除注释
+<<<<<<< HEAD
+// const changed = require('gulp-changed'); // 监听文件。暂用
+
+const shell = require('shelljs'); // shell脚本
+=======
+>>>>>>> eff8fd82838f4aa6e7d528cffab8a67c57474355
 // 并行工具gulp-sequence
 // 以下rollup组件
 var replace = require('rollup-plugin-replace') // 可在源码中读取环境变量
@@ -42,7 +48,18 @@ function builddev () {
 
 // 线上环境需要处理的
 function buildprod () {
+<<<<<<< HEAD
+
+  // 使用shell脚本处理源文件
+  // shell.ls(path.entry.nodeui).forEach(function (file) {
+  //   shell.sed('-i', /@ioc/, './ioc', file)
+  // });
   return gulp.src(path.entry.nodeui)
+    // .pipe(changed(path.dist))
+    // .pipe(shell.sed('-i','@/ioc', './ioc', 'app.ts'))
+=======
+  return gulp.src(path.entry.nodeui)
+>>>>>>> eff8fd82838f4aa6e7d528cffab8a67c57474355
     // .pipe(babel({
     //   babelrc:false, // 外部.babelrc设置的参数无效
     //   ignore: ['./src/nodeui/config/*.ts'], // 忽略此文件夹下面的所有js文件
@@ -100,7 +117,8 @@ if (process.env.NODE_ENV == 'lint') {
 // 默认任务配置
 gulp.task('default', build)
 
-gulp.task('base', function () {
+// 实时监听编译
+gulp.task('watch', function () {
   // 监听文件
-  watch(path.entry.nodeui, { ignoreInitial: false }, build)
+  gulp.watch(path.entry.nodeui, build)
 })

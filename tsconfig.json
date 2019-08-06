@@ -1,9 +1,14 @@
 {
   // 编译选项配置
   "compilerOptions": {
+    "sourceMap": true, // 把ts编译成js的时候，同时生成对应的sourceMap文件,方便排错
     "outDir": "./dist/", // 输出目录
     "baseUrl": ".", // 解析非相对模块名的基准目录,相当于加了前缀
-    "sourceMap": true, // 把ts编译成js的时候，同时生成对应的sourceMap文件,方便排错
+    // 配置TS中的别名，检测语法不报错
+    "paths": {
+      "@components/*": ["src/webApp/components/*"],
+      "@views/*": ["src/webApp/views/*"],
+    },
     // 编译过程中需要引入的库文件的列表
     "lib": [
       "es2015",
@@ -11,7 +16,7 @@
       "dom.iterable",
       "scripthost"
     ],
-    "module": "esnext", // 采用的模块系统
+    "module": "esnext", // 采用的模块系统 commonjs
     "target": "es6", // 编译输出目标 ES 版本
     "moduleResolution": "node",
     "allowJs": true, // 允许编译javascript文件
@@ -26,14 +31,14 @@
     "allowSyntheticDefaultImports": true, // 允许从没有设置默认导出的模块中默认导入
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    
+
     // 每当编译器在某一rootDirs的子目录下发现了相对模块导入，它就会尝试从每一个rootDirs中导入。
     // 例如场景构建中的会将某些文件夹,输出拷贝到同一个目录下
     // "rootDirs": [
     //   "src/",
     // ],
     // IOC容器修饰器需要使用
-    "types": ["reflect-metadata","node","mocha"],
+    "types": ["reflect-metadata", "node", "mocha"],
     // 启用VSCODE检查语法插件
     "plugins": [{
       "name": "typescript-tslint-plugin"
@@ -51,6 +56,6 @@
     "node_modules/@types"
   ],
   "exclude": [ // 排除指定文件夹不TS编译
-    "node_modules",
+    "node_modules"
   ]
 }

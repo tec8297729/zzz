@@ -66,7 +66,8 @@ export default class SafeRequest {
       // 不使用mock数据的正式环境，请求前缀
       // baseApi = 'https://www.easy-mock.com/mock/5a7278e28d0c633b9c4adbd7/api';
     }
-    baseApi = '/'; // 直接使用node端接口，要node开启服务
+    baseApi = 'http://localhost:3000/'; // 直接使用node端接口，要node开启服务
+    // baseApi = '/'; // 直接使用node端接口，要node开启服务
 
     return new Promise((resolve, reject) => {
       axios({

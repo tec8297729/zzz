@@ -6,13 +6,13 @@ const FormItem = Form.Item;
 const Option = Select.Option;
 
 interface IState {
-  list:Array<any>,
-  isShowOpenCity: boolean,
-  pagination?:any,
+  list: Array<any>;
+  isShowOpenCity: boolean;
+  pagination?: any;
 }
 
 export default class City extends React.Component {
-  public state:IState = {
+  public state: IState = {
     list: [],
     isShowOpenCity: false
   };
@@ -54,36 +54,33 @@ export default class City extends React.Component {
     //       })
     //     });
     //   });
-
-  }
+  };
 
   // 开通城市
   public handleOpenCity = () => {
     this.setState({
       isShowOpenCity: true
     });
-  }
+  };
 
   // 城市开通提交
   public handleSubmit = () => {
     let cityInfo = this.cityForm.props.form.getFieldsValue();
-    SafeRequest
-      .ajax({
-        url: '/city/open',
-        data: {
-          params: cityInfo
-        }
-      })
-      .then(res => {
-        if (res.code == '0') {
-          message.success('开通成功');
-          this.setState({
-            isShowOpenCity: false
-          });
-          this.requestList();
-        }
-      });
-  }
+    SafeRequest.ajax({
+      url: '/city/open',
+      data: {
+        params: cityInfo
+      }
+    }).then(res => {
+      if (res.code == '0') {
+        message.success('开通成功');
+        this.setState({
+          isShowOpenCity: false
+        });
+        this.requestList();
+      }
+    });
+  };
 
   public render() {
     const columns = [
@@ -154,12 +151,12 @@ export default class City extends React.Component {
           </Button>
         </Card>
         {/* <div className="content-wrap"> */}
-          <Table
-            bordered
-            columns={columns}
-            dataSource={this.state.list}
-            pagination={this.state.pagination}
-          />
+        <Table
+          bordered
+          columns={columns}
+          dataSource={this.state.list}
+          pagination={this.state.pagination}
+        />
         {/* </div> */}
 
         {/* 对话框组件，当vssible为true就弹出显示 */}

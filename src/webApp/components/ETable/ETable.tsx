@@ -172,6 +172,7 @@ export default class ETable extends React.Component<IProps> {
             this.onRowClick(record, index);
           }
         })}
+        // rowClassName={'tableClassName'} // 每行的样式
       />
     );
   }

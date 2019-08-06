@@ -14,11 +14,11 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin') // 引入分离�
 const tsImportPluginFactory = require('ts-import-plugin'); // 抽离antd没用到的css
 // const { CheckerPlugin } = require('awesome-typescript-loader'); // 缓存编译ts
 
-const {GenerateSW} = require('workbox-webpack-plugin'); // PWA插件
+const { GenerateSW } = require('workbox-webpack-plugin'); // PWA插件
 const CopyWebpackPlugin = require('copy-webpack-plugin'); // 复制目录插件
 const CompressionPlugin = require('compression-webpack-plugin'); // gzip压缩文件，打包出一份.gz文件，nginx开启gzip加载速度提升
 // 转换目录函数
-function resolve(relatedPath) {
+function resolve (relatedPath) {
   return path.resolve(__dirname, relatedPath);
 }
 
@@ -81,11 +81,11 @@ let config = {
             loader: 'ts-loader',
             options: {
               getCustomTransformers: () => ({
-                before: [ tsImportPluginFactory({
+                before: [tsImportPluginFactory({
                   libraryName: 'antd',
                   libraryDirectory: 'lib',
                   style: true
-                }) ]
+                })]
               }),
               transpileOnly: true
             },
@@ -206,54 +206,68 @@ let config = {
       // exclude: [/\.(?:png|jpg|jpeg|svg)$/],
       // maximumFileSizeToCacheInBytes: 4 * 1024 * 1024, // 缓存大小空间4mb
       // 通过传入urlPatterns、handlers和可用的一些options，在生成的service worker中去添加适当的代码来处理运行时的缓存。
-      // runtimeCaching: [{
-      //   // 匹配包含`api`的任何同源请求。
-      //   urlPattern: '/', // 可以使用正则new RegExp('^https://cors\.example\.com/')
-      //   // NetworkFirst应用网络优先策略。
-      //   handler: 'NetworkFirst', // 可以跨域staleWhileRevalidate
-      //   options: {
-      //     // 超过10s使用缓存做为回退方案。
-      //     networkTimeoutSeconds: 10,
-      //     // 为此路由指定自定义缓存名称。
-      //     cacheName: 'my-api-cache',
-      //     // 配置自定义缓存过期。
-      //     expiration: {
-      //       maxEntries: 100, // 缓存条数限制（超过会删除最旧的一条）
-      //       maxAgeSeconds: 24 * 60 * 60, // 缓存时间（秒） 24小时
-      //     },
-      //     // 配置background sync.
-      //     // backgroundSync: {
-      //     //   name: 'my-queue-name',
-      //     //   options: {
-      //     //     maxRetentionTime: 60 * 60,
-      //     //   },
-      //     // },
-      //     // 配置哪些response是可缓存的。
-      //     cacheableResponse: {
-      //       statuses: [0, 200],
-      //       // headers: {'x-test': 'true'},
-      //     },
-      //     // 配置广播缓存更新插件。
-      //     // broadcastUpdate: {
-      //     //   channelName: 'my-update-channel',
-      //     // },
-      //     // // 添加您需要的任何其他逻辑插件。
-      //     // plugins: [
-      //     //   {cacheDidUpdate: () => /* 自定义插件代码 */}
-      //     // ],
-      //     // // matchOptions 和 fetchOptions 用于配置 handler.
-      //     // fetchOptions: {
-      //     //   mode: 'no-cors',
-      //     // },
-      //     // matchOptions: {
-      //     //   ignoreSearch: true,
-      //     // },
-      //   }
-      // }],
-      // // 指定部份URL以外的才缓存，以`/_`开头或包含`admin`的URL，加入黑名单，优先级最高
+
+      // 里面可以配置多个{}，写不同后缀文件缓存不同配置
+      runtimeCaching: [{
+        // urlPattern: '/api/', // 可以使用正则new RegExp('^https://cors\.example\.com/')
+        urlPattern: /.*\.js/, // 匹配文件，也可以匹配网络地址
+
+        // handler应用网络优先策略。
+        /* 
+          staleWhileRevalidate 请求的路由有对应的 cache 缓存就直接返回，同时在后台再次发起请求并更新 Cache
+          networkFirst 请求后，首先尝试拿到网路请求的返回结果，请求到就直接返回并且更新 cache，否则返回缓存中的内容
+          cacheFirst 请求后，直接从 Cache 中取得结果，没有的话在发起网络请求
+          networkOnly 强制使用网络请求
+          cacheOnly 强制使用 Cache 资源
+        */
+        handler: 'NetworkFirst',
+
+        options: {
+          networkTimeoutSeconds: 10, // 超过10s使用缓存做为回退方案。
+          cacheName: 'my-api-cache', // 为此路由指定自定义缓存名称。
+          // 配置自定义缓存过期。
+          // expiration: {
+          //   maxEntries: 100, // 缓存条数限制（超过会删除最旧的一条）
+          //   maxAgeSeconds: 24 * 60 * 60, // 缓存时间（秒） 24小时
+          // },
+          // 配置background sync.
+          // backgroundSync: {
+          //   name: 'my-queue-name',
+          //   options: {
+          //     maxRetentionTime: 60 * 60,
+          //   },
+          // },
+          // 配置哪些response是可缓存的。
+          cacheableResponse: {
+            statuses: [0, 200],
+            // headers: {'x-test': 'true'},
+          },
+          // 配置广播缓存更新插件。
+          // broadcastUpdate: {
+          //   channelName: 'my-update-channel',
+          // },
+          // // 添加您需要的任何其他逻辑插件。
+          // plugins: [
+          //   {cacheDidUpdate: () => /* 自定义插件代码 */}
+          // ],
+          // // matchOptions 和 fetchOptions 用于配置 handler.
+          // fetchOptions: {
+          //   mode: 'no-cors',
+          // },
+          // matchOptions: {
+          //   ignoreSearch: true,
+          // },
+        }
+      }],
+
+      // navigateFallback: '/app-shell', // 预先缓存单页应用
+      // // // 指定部份URL以外的才缓存，以`/_`开头或包含`admin`的URL，加入黑名单，优先级最高
       // navigateFallbackBlacklist: [/^\/_/, /admin/],
-      // // 以`/pages`开头的URL加入白名单, 优先级没上面的高
-      // navigateFallbackWhitelist: [/^\/pages/]
+      // // // 以`/pages`开头的URL加入白名单, 优先级没上面的高
+      // navigateFallbackWhitelist: [/^\/pages/],
+      // directoryIndex: 'index.html', // 当url路由没有匹配到时，自动添加后缀
+      // navigationPreload: true, // 是否启用预加载，需要配合runtimeCaching使用
+      // modifyURLPrefix: {'/dist': ''}, // 从网址中删除dist前缀
     })
   ],
   resolve: {
@@ -320,4 +334,4 @@ let config = {
   },
 };
 
-module.exports = merge( _mergeConfig, config ); // 合并配置文件输出
+module.exports = merge(_mergeConfig, config); // 合并配置文件输出
