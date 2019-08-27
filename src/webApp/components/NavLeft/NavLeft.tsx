@@ -86,7 +86,7 @@ class App extends React.Component<IProps> {
     this.setState({
       currentKey: [item.key]
     });
-  };
+  }
 }
 
 // 以下是redux二个合并的函数，参考学习用

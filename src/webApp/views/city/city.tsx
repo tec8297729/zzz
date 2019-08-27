@@ -54,14 +54,14 @@ export default class City extends React.Component {
     //       })
     //     });
     //   });
-  };
+  }
 
   // 开通城市
   public handleOpenCity = () => {
     this.setState({
       isShowOpenCity: true
     });
-  };
+  }
 
   // 城市开通提交
   public handleSubmit = () => {
@@ -80,7 +80,7 @@ export default class City extends React.Component {
         this.requestList();
       }
     });
-  };
+  }
 
   public render() {
     const columns = [

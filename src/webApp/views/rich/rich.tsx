@@ -76,7 +76,7 @@ export default class Rich extends React.Component<IProps, IState> {
     this.setState({
       editorState
     });
-  };
+  }
   // 保存了编辑器里面内容数据
   public onEditorChange = editorContent => {
     // console.log(editorContent);
@@ -84,19 +84,19 @@ export default class Rich extends React.Component<IProps, IState> {
     this.setState({
       editorContent
     });
-  };
+  }
 
   // 清空编辑器内容
   public handleClearContent = () => {
     this.setState({
       editorState: ''
     });
-  };
+  }
 
   // 获取HTML文本内容
   public handleGetText = () => {
     this.setState({
       showRichText: true
     });
-  };
+  }
 }
