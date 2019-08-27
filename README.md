@@ -5,3 +5,11 @@ nodeui 是node层，主做接口分离，另外附带非TS版本的，但主更�
 webApp业务层
 
 技术整合更新、优化等等会相对不定期加入新的，就不一一举例
+
+
+启用项目流程：
+1、npm run dev:build 构造打包node层监听实时编译（gulp编译），更改node代码实时更新服务
+2、npm run dev:server 启用node服务
+3、npm run dev:client 启动react项目（webpack4编译）
+
+接入的是本地node，所以先要启动node服务，在去启用webpack。

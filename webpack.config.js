@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
+const os = require('os');
 const merge = require('webpack-merge'); // 合并webpack配置插件
 const argv = require('yargs-parser')(process.argv.slice(2)); // 可以解析参数成对象，也可以读取到webpack系统变量
 const _mode = argv.mode || 'development'; // 通过argv插件读取webpack环境变量，默认开发环境
@@ -9,7 +10,7 @@ const _modeflag = (_mode == 'production' ? true : false); // 判断是否线上�
 const HtmlWebpackPlugin = require('html-webpack-plugin'); // 生成解析html页面
 const MiniCssExtractPlugin = require('mini-css-extract-plugin') // 引入分离打包CSS
 // const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin'); // 压缩css
-
+const HappyPack = require('happypack');
 // const UglifyJsPlugin = require('uglifyjs-webpack-plugin') ; // 多核压缩
 const tsImportPluginFactory = require('ts-import-plugin'); // 抽离antd没用到的css
 // const { CheckerPlugin } = require('awesome-typescript-loader'); // 缓存编译ts
@@ -22,6 +23,7 @@ function resolve (relatedPath) {
   return path.resolve(__dirname, relatedPath);
 }
 
+const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length })
 
 // 配置webpack选项
 let config = {
@@ -40,29 +42,8 @@ let config = {
           resolve('./node_modules/react-draft-wysiwyg/dist/'),
         ],
         use: [
-          // 'cache-loader',
-          { // 提取共用CSS
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              minimize: _modeflag, // 是否启用压缩
-              // publicPath: '/' // 插入到页面 文件路径前缀
-            }
-          },
-          // 'style-loader',
-          'css-loader',
-          'postcss-loader',
-          {
-            loader: 'less-loader', // compiles Less to CSS
-            options: {
-              modifyVars: {
-                // 修改css主题颜色，其它参数antd官网可看
-                // '@primary-color': '#1DA57A',
-                // 'link-color': '#1DA57A',
-                // 'border-radius-base': '2px',
-              },
-              javascriptEnabled: true,
-            },
-          },
+          !_modeflag ? 'style-loader' : MiniCssExtractPlugin.loader,
+          'happypack/loader?id=css'
         ],
       },
       // tsx文件解析使用ts-loader
@@ -99,16 +80,7 @@ let config = {
         test: /\.(js|jsx|mjs)?$/,
         exclude: /node_modules/, // 排除目录
         include: resolve('./src'), // 指定编译目录
-        use: [
-          // 'cache-loader',
-          {
-            loader: 'babel-loader',
-            options: {
-              plugins: [],
-              compact: true,
-            }
-          }
-        ]
+        use: 'happypack/loader?id=js',
       },
 
       /* 解析图片-放到指定img路径 */
@@ -268,7 +240,42 @@ let config = {
       // directoryIndex: 'index.html', // 当url路由没有匹配到时，自动添加后缀
       // navigationPreload: true, // 是否启用预加载，需要配合runtimeCaching使用
       // modifyURLPrefix: {'/dist': ''}, // 从网址中删除dist前缀
-    })
+    }),
+
+    new HappyPack({
+      id: 'js',
+      threadPool: happyThreadPool,
+      loaders: [
+        {
+          loader: 'babel-loader',
+          options: {
+            plugins: [],
+            compact: true,
+          }
+        },
+      ],
+    }),
+    new HappyPack({
+      id: 'css',
+      threadPool: happyThreadPool,
+      loaders: [
+        // 'cache-loader',
+        'css-loader',
+        'postcss-loader',
+        {
+          loader: 'less-loader', // compiles Less to CSS
+          options: {
+            modifyVars: {
+              // 修改css主题颜色，其它参数antd官网可看
+              // '@primary-color': '#1DA57A',
+              // 'link-color': '#1DA57A',
+              // 'border-radius-base': '2px',
+            },
+            javascriptEnabled: true,
+          },
+        },
+      ],
+    }),
   ],
   resolve: {
     // 别名
