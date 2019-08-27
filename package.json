@@ -18,7 +18,7 @@
     "pm2:stop": "pm2 stop pm2.json",
     "clear": "rimraf dist",
     "tslint": "tslint --project . src/**/*.ts src/**/*.tsx",
-    "tslint2": "tslint --fix . src/**/*.ts src/**/*.tsx",
+    "tslint:fix": "tslint --fix . src/**/*.ts src/**/*.tsx",
     "prettier": "prettier -l ./src/**/*",
     "build:prod": "npm run build:server && npm run build:client",
     "test": "cross-env NODE_ENV=production node ./dist/mochaRunner.js",
@@ -26,7 +26,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "npm run tslint"
+      "pre-push": "npm run tslint:fix"
     }
   },
   "dependencies": {
