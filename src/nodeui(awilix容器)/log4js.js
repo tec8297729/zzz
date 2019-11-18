@@ -6,10 +6,13 @@ log4js.configure({
   // 输出源--type:文件(你也可定义xml),filename:输出的文件名
   appenders: {
     cheese: {
-      type: 'file',
+      type: 'file', // datefile
       filename: './log/cheese.log',
       // 文件最大存储空间，当超过文件容量超出会自动生成一个文件test.log.1的序列自增长的文件
-      'maxLogSize': 2097152,
+      // 表示一个文件的时间命名格式，只有配合datefile才起作用
+      'pattern': '-yyyy-MM-dd.log',//（可选，默认为.yyyy-MM-dd） - 用于确定何时滚动日志的模式。格式:.yyyy-MM-dd-hh:mm:ss.log
+      'alwaysIncludePattern': true, // 表示日志是否包含命名格式，只有配合datefile才起作用
+      'maxLogSize': 2097152, // 只在 type: 'file' 中才支持
       'backup': 10, // 当文件内容超过文件存储空间时，备份文件的数量（超过10个会删除前面）
     }
   },
@@ -27,13 +30,13 @@ log4js.configure({
 const loginit = app => {
   const logger = log4js.getLogger('cheese');
 
-  exports.uselog = ()=> {
+  exports.uselog = () => {
     var logger = log4js.getLogger();
     // 监听错误--容错处理
     app.on('error', (err, ctx) => {
       if (err.status == 500) {
         logger.error('500服务器错误:' + ctx);
-      }else{
+      } else {
         logger.error(err.status + '--server error:' + ctx);
       }
     });
